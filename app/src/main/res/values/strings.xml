@@ -2,8 +2,8 @@
     <string name="app_name">olioprojekti</string>
 
     <string-array name="waterSizes">
-        <item>250 ml</item>
-        <item>350 ml</item>
-        <item>500 ml</item>
+        <item>250</item>
+        <item>350</item>
+        <item>500</item>
     </string-array>
 </resources>
