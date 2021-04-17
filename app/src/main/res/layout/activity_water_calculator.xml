@@ -41,7 +41,7 @@
 
     <Spinner
         android:id="@+id/wtrSizeSpinner"
-        android:layout_width="160dp"
+        android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
@@ -63,9 +63,21 @@
         android:id="@+id/wtrBtnDrink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
         android:text="Drink"
+        android:onClick="jsonSave"
+        app:layout_constraintStart_toEndOf="@+id/textMl"
+        app:layout_constraintTop_toBottomOf="@+id/wtrHowMuch" />
+
+    <TextView
+        android:id="@+id/textMl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="ml"
+        android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/wtrSizeSpinner"
         app:layout_constraintTop_toBottomOf="@+id/wtrHowMuch" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
