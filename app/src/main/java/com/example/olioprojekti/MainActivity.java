@@ -14,9 +14,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    public void loadWaterCalc(View view) {
+        Intent intent = new Intent(MainActivity.this, WaterCalculatorActivity.class);
+        startActivity(intent);
+
+    }
+
     public void loadLoginActivity(View v) {
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
     }
 
 }
+
