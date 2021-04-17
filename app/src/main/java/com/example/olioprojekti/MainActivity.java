@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,6 +16,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         asd.readJSON();
     }
 
+
     public void monke(View v){
         asdas.method();
     }
@@ -45,5 +46,15 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void loadWaterCalc(View view) {
+        Intent intent = new Intent(MainActivity.this, WaterCalculatorActivity.class);
+        startActivity(intent);
+
+    }
+
+    public void loadLoginActivity(View v) {
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+    }
 
 }
