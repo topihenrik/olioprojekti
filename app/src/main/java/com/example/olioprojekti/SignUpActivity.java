@@ -29,7 +29,7 @@ public class SignUpActivity extends AppCompatActivity {
         editHeight = findViewById(R.id.editHeight2);
         editWeight = findViewById(R.id.editWeight);
         editAddress = findViewById(R.id.editAddress);
-        Button button = (Button) findViewById(R.id.button);
+        Button button = (Button) findViewById(R.id.buttonWeightLoss);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

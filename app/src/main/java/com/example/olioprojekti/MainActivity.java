@@ -30,12 +30,12 @@ public class MainActivity extends AppCompatActivity {
         asdas.method();
     }
 
-    public void loadActivity(View v){
+    public void loadWeightLossActivity(View v){
         Intent intent = new Intent(MainActivity.this, Weightloss_Activity.class);
         startActivity(intent);
     }
 
-    public void loadWaterCalc(View view) {
+    public void loadWaterCalcActivity(View view) {
         Intent intent = new Intent(MainActivity.this, WaterCalculatorActivity.class);
         startActivity(intent);
 
