@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,7 +30,7 @@ public class SignUpActivity extends AppCompatActivity {
     Gson gson = new Gson();
     EditText editFirstName, editLastName, editEmail, editUsername, editPassword, editHeight, editWeight, editAddress;
     private static final String FILE_NAME = "data.json";
-
+    ArrayList<Account> arrayList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,10 +76,14 @@ public class SignUpActivity extends AppCompatActivity {
                 sb.append(output);
             }
             String json = sb.toString();
-            Type userListType = new TypeToken<ArrayList<Account>>(){}.getType();
+
+            if (!(json == "")) {
+                Type userListType = new TypeToken<ArrayList<Account>>(){}.getType();
+                arrayList = gson.fromJson(json, userListType);
+            }
 
             Account account = am.register(editFirstName.getText().toString(), editLastName.getText().toString(), editEmail.getText().toString(), editUsername.getText().toString(), editPassword.getText().toString(), editHeight.getText().toString(), editWeight.getText().toString(), editAddress.getText().toString());
-            ArrayList<Account> arrayList = gson.fromJson(json, userListType);
+            arrayList.add(account);
 
             FileOutputStream fos = null;
             String credentials = gson.toJson(arrayList);

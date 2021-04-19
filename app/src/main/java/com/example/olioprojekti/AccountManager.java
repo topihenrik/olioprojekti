@@ -37,7 +37,7 @@ public class AccountManager {
     public Account register(String fName, String lName, String userName, String eMail, String passWord, String userAddress, String Weight, String Height) {
         byte[] salt = PasswordHash.getSalt();
         String generatedPassword = PasswordHash.generatePassword(passWord, salt);
-        account = new Account(fName, lName, userName, eMail, generatedPassword, userAddress, Weight, Height, salt);
+        Account account = new Account(fName, lName, userName, eMail, generatedPassword, userAddress, Weight, Height, salt);
         return account;
     }
 
