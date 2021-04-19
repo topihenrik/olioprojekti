@@ -30,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
         asdas.method();
     }
 
+    public void loadSwaggerApiActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, SwaggerApiActivity.class);
+        startActivity(intent);
+    }
+
     public void loadWeightLossActivity(View v){
         Intent intent = new Intent(MainActivity.this, Weightloss_Activity.class);
         startActivity(intent);
