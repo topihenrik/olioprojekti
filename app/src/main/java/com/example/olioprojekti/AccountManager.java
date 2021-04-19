@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class AccountManager {
     Account account;
-
+    Gson gson = new Gson();
     ArrayList<Account> arrayList = new ArrayList<Account>();
 
 
@@ -19,7 +19,8 @@ public class AccountManager {
         return am;
     }
 
-    public void login(String name, String password) {
+    public void login(String name, String password, String json) {
+        System.out.println(json);
         for (Account x : arrayList) {
             if (name.equals(x.getUserName())) {
                 if (name.equals(x.getUserName()) && x.getPassword().equals(PasswordHash.generatePassword(password, x.getSalt()) )){
@@ -33,13 +34,11 @@ public class AccountManager {
         }
     }
 
-    public String register(String fName, String lName, String userName, String eMail, String passWord, String userAddress, String Weight, String Height) {
+    public Account register(String fName, String lName, String userName, String eMail, String passWord, String userAddress, String Weight, String Height) {
         byte[] salt = PasswordHash.getSalt();
         String generatedPassword = PasswordHash.generatePassword(passWord, salt);
         account = new Account(fName, lName, userName, eMail, generatedPassword, userAddress, Weight, Height, salt);
-        Gson gson = new Gson();
-        String json = gson.toJson(account);
-        return json;
+        return account;
     }
 
 }
