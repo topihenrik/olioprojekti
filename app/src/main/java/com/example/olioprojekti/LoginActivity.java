@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -59,7 +60,8 @@ public class LoginActivity extends AppCompatActivity {
                 sb.append(output);
             }
             String json = sb.toString();
-            System.out.println(json);
+            Log.d("Login; JSON content:", json);
+            am.login(username.getText().toString(), password.getText().toString(), json);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

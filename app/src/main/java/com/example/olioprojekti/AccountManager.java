@@ -1,15 +1,19 @@
 package com.example.olioprojekti;
 
 
+import android.util.Log;
+
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.FileOutputStream;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class AccountManager {
     Account account;
     Gson gson = new Gson();
-    ArrayList<Account> arrayList = new ArrayList<Account>();
+    static ArrayList<Account> arrayList = new ArrayList<Account>();
 
 
 
@@ -20,16 +24,20 @@ public class AccountManager {
     }
 
     public void login(String name, String password, String json) {
-        System.out.println(json);
+        Log.d("AcntMan; JSON content:", json);
+        if (!(json == "")) {
+            Type userListType = new TypeToken<ArrayList<Account>>(){}.getType();
+            arrayList = gson.fromJson(json, userListType);
+        }
         for (Account x : arrayList) {
             if (name.equals(x.getUserName())) {
                 if (name.equals(x.getUserName()) && x.getPassword().equals(PasswordHash.generatePassword(password, x.getSalt()) )){
-                    System.out.println("LOGGED IN");
+                    Log.d("LogStatus:","LOGGED IN");
                 } else {
-                    System.out.println("WRONG USERNAME OR PASSWORD");
+                    Log.d("LogStatus:","WRONG USERNAME OR PASSWORD");
                 }
             } else if (!name.equals(x.getUserName())){
-                System.out.println("username not found");
+                Log.d("LogStatus:","username not found");
             }
         }
     }
