@@ -11,18 +11,26 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String FILE_NAME = "data.json";
+    //Account accountInUse = new Account();
     AccountManager am = AccountManager.getInstance();
     EditText username, password;
     Context context = null;
@@ -31,17 +39,14 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Button button = (Button) findViewById(R.id.backToMain);
         username = (EditText) findViewById(R.id.editUsername2);
         password = (EditText) findViewById(R.id.editPassword2);
         context = LoginActivity.this;
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goBackToMainIntent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(goBackToMainIntent);
-            }
-        });
+    }
+
+    public void loadMainActivity(){
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
     public void loadRegisterActivity(View v) {
@@ -61,7 +66,14 @@ public class LoginActivity extends AppCompatActivity {
             }
             String json = sb.toString();
             Log.d("Login; JSON content:", json);
-            am.login(username.getText().toString(), password.getText().toString(), json);
+            Account accountInUse = am.login(username.getText().toString(), password.getText().toString(), json);
+            if (accountInUse != null) {
+                Toast.makeText(LoginActivity.this, "Logged in!", Toast.LENGTH_LONG).show();
+                DataHandler.getInstance().setAccount(accountInUse);
+                loadMainActivity();
+            } else {
+                Toast.makeText(LoginActivity.this, "Wrong Username or Password!", Toast.LENGTH_LONG).show();
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

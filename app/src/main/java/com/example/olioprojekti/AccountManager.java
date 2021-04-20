@@ -23,7 +23,7 @@ public class AccountManager {
         return am;
     }
 
-    public void login(String name, String password, String json) {
+    public Account login(String name, String password, String json) {
         Log.d("AcntMan; JSON content:", json);
         if (!(json == "")) {
             Type userListType = new TypeToken<ArrayList<Account>>(){}.getType();
@@ -33,6 +33,7 @@ public class AccountManager {
             if (name.equals(x.getUserName())) {
                 if (name.equals(x.getUserName()) && x.getPassword().equals(PasswordHash.generatePassword(password, x.getSalt()) )){
                     Log.d("LogStatus:","LOGGED IN");
+                    return(x);
                 } else {
                     Log.d("LogStatus:","WRONG USERNAME OR PASSWORD");
                 }
@@ -40,6 +41,7 @@ public class AccountManager {
                 Log.d("LogStatus:","username not found");
             }
         }
+        return(null);
     }
 
     public Account register(String fName, String lName, String userName, String eMail, String passWord, String userAddress, String Weight, String Height) {
