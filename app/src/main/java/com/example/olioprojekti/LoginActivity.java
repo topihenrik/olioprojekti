@@ -1,36 +1,22 @@
 package com.example.olioprojekti;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.google.gson.reflect.TypeToken;
-
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String FILE_NAME = "data.json";
-    //Account accountInUse = new Account();
     AccountManager am = AccountManager.getInstance();
     EditText username, password;
     Context context = null;
@@ -42,6 +28,18 @@ public class LoginActivity extends AppCompatActivity {
         username = (EditText) findViewById(R.id.editUsername2);
         password = (EditText) findViewById(R.id.editPassword2);
         context = LoginActivity.this;
+
+        // CREATE "data.json" IF IT DOESN'T EXIST. IF THE FILE EXISTS THEN NOTHING INTERESTING HAPPENS.
+        FileOutputStream fos = null;
+        try {
+            fos = openFileOutput(FILE_NAME, Context.MODE_APPEND);
+            fos.write("".getBytes());
+            fos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void loadMainActivity(){
@@ -65,7 +63,6 @@ public class LoginActivity extends AppCompatActivity {
                 sb.append(output);
             }
             String json = sb.toString();
-            Log.d("Login; JSON content:", json);
             Account accountInUse = am.login(username.getText().toString(), password.getText().toString(), json);
             if (accountInUse != null) {
                 Toast.makeText(LoginActivity.this, "Logged in!", Toast.LENGTH_LONG).show();

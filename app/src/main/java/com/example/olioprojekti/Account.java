@@ -1,7 +1,6 @@
 package com.example.olioprojekti;
 
 public class Account {
-    //String firstName = "Jari", lastName = "Mattila", username = "jari.mattila", email = "jari.mattila@gmail.com", password = "jartsa123", address = "jarintie 12", weight = "88", height = "182";
     String firstName, lastName, username, email, password, address, weight, height;
     byte[] salt;
 

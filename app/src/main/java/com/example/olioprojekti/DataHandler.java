@@ -1,5 +1,7 @@
 package com.example.olioprojekti;
 
+// ONCE THE USER HAS LOGGED IN, THIS IS WHERE THE ACCOUNT INFORMATION RESIDES.
+// APPLICATION UPDATES THE USERS ACCOUNT INFORMATION THROUGH THIS CLASS.
 public class DataHandler {
     private static DataHandler single = new DataHandler();
     private static Account account;

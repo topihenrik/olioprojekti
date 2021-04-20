@@ -1,12 +1,8 @@
 package com.example.olioprojekti;
 
-
 import android.util.Log;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import java.io.FileOutputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -15,16 +11,14 @@ public class AccountManager {
     Gson gson = new Gson();
     static ArrayList<Account> arrayList = new ArrayList<Account>();
 
-
-
     private static AccountManager am = new AccountManager();
 
     public static AccountManager getInstance() {
         return am;
     }
 
+    // CHECKS IF USERNAME AND PASSWORD ARE CORRECT.
     public Account login(String name, String password, String json) {
-        Log.d("AcntMan; JSON content:", json);
         if (!(json == "")) {
             Type userListType = new TypeToken<ArrayList<Account>>(){}.getType();
             arrayList = gson.fromJson(json, userListType);
@@ -44,6 +38,7 @@ public class AccountManager {
         return(null);
     }
 
+    // CREATES A NEW ACCOUNT OBJECT FOR A NEW USER.
     public Account register(String fName, String lName, String userName, String eMail, String passWord, String userAddress, String Weight, String Height) {
         byte[] salt = PasswordHash.getSalt();
         String generatedPassword = PasswordHash.generatePassword(passWord, salt);

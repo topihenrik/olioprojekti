@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -28,9 +30,10 @@ public class SignUpActivity extends AppCompatActivity {
     Context context = null;
     Gson gson = new Gson();
     EditText editFirstName, editLastName, editEmail, editUsername, editPassword, editHeight, editWeight, editAddress;
-    TextView textFailWeight, textFailHeight, textFailPassword, textFailFirstName, textFailLastName;
+    TextView textFailWeight, textFailHeight, textFailPassword, textFailFirstName, textFailLastName, textFailUserName;
     private static final String FILE_NAME = "data.json";
     ArrayList<Account> arrayList = new ArrayList<>();
+    String json;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,24 +46,42 @@ public class SignUpActivity extends AppCompatActivity {
         editHeight = findViewById(R.id.editHeight2);
         editWeight = findViewById(R.id.editWeight);
         editAddress = findViewById(R.id.editAddress);
+
         textFailWeight = findViewById(R.id.textFailWeight);
         textFailHeight = findViewById(R.id.textFailHeight);
         textFailPassword = findViewById(R.id.textFailPassword);
         textFailFirstName = findViewById(R.id.textFailFirstName);
         textFailLastName = findViewById(R.id.textFailLastName);
+        textFailUserName = findViewById(R.id.textFailUserName);
         Button button = (Button) findViewById(R.id.buttonWeightLoss);
         context = SignUpActivity.this;
-        FileOutputStream fos = null;
+
+        // LOAD ACCOUNT JSON ARRAYLIST INTO "json" AS STRING FROM "data.json" FILE.
+        FileInputStream fis = null;
         try {
-            fos = openFileOutput(FILE_NAME, Context.MODE_APPEND);
-            fos.write("".getBytes());
-            fos.close();
+            fis = openFileInput(FILE_NAME);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String text;
+            while ((text = br.readLine()) != null) {
+                sb.append(text);
+            }
+            json = sb.toString();
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +97,26 @@ public class SignUpActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // CHECKS IF USERNAME HAS ALREADY BEEN TAKEN.
+    public boolean isUserNameTaken(String username, String jsonAccounts) {
+        if (!(jsonAccounts == "")) {
+            Type userListType = new TypeToken<ArrayList<Account>>(){}.getType();
+            arrayList = gson.fromJson(jsonAccounts, userListType);
+        }
 
+        for (Account x : arrayList) {
+            if (username.equals(x.getUserName())) {
+                Log.d("TakenStatus:", "USERNAME IS TAKEN!");
+                return true;
+            }
+            Log.d("TakenStatus:", "USERNAME IS NOT TAKEN!");
+
+        }
+        return false;
+
+    }
+
+    // USER HAS FILLED SOME INFORMATION AND PRESSES THE "SIGN UP" BUTTON.
     public void registerClick (View view) {
         boolean failcheck = false;
 
@@ -116,26 +156,24 @@ public class SignUpActivity extends AppCompatActivity {
             textFailHeight.setText("");
         }
 
+        if (isUserNameTaken(editUsername.getText().toString(), json)) {
+            textFailUserName.setText("Username is already taken!");
+            failcheck = true;
+        } else {
+            textFailUserName.setText("");
+        }
+
         if (failcheck) {
             return;
         }
 
-        StringBuilder sb = new StringBuilder();
         try {
-            InputStream inputStream = context.openFileInput(FILE_NAME);
-            String output = "";
-            BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-            while ((output = br.readLine()) != null) {
-                sb.append(output);
-            }
-            String json = sb.toString();
-
             if (!(json == "")) {
                 Type userListType = new TypeToken<ArrayList<Account>>(){}.getType();
                 arrayList = gson.fromJson(json, userListType);
             }
 
-            Account account = am.register(editFirstName.getText().toString(), editLastName.getText().toString(), editEmail.getText().toString(), editUsername.getText().toString(), editPassword.getText().toString(), editHeight.getText().toString(), editWeight.getText().toString(), editAddress.getText().toString());
+            Account account = am.register(editFirstName.getText().toString(), editLastName.getText().toString(), editUsername.getText().toString(), editEmail.getText().toString(), editPassword.getText().toString(), editAddress.getText().toString() , editWeight.getText().toString(), editHeight.getText().toString());
             arrayList.add(account);
 
             FileOutputStream fos = null;
