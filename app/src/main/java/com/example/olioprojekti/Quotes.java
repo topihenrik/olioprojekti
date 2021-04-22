@@ -1,68 +1,69 @@
 package com.example.olioprojekti;
 
-import android.view.View;
+import android.util.Log;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.InputStream;
-import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.Random;
 
 public class Quotes {
 
-    private static Quotes sitaatit = new Quotes();
-
+    private static Quotes motivationalQuotes = new Quotes();
     public static Quotes getInstance(){
-            return sitaatit;
+            return motivationalQuotes;
     }
 
 
-    public void readJSON (){
+    public String makeQuote (){ //Makes a json array from the string and then selects a random quote from that list and returns a String with the quote and author.
         String json = getJSON();
-        System.out.print("JSON" + json);
+        Random random = new Random();
+        String quote = null;
+        String author = null;
 
         if(json != null){
             try {
                 JSONArray jsonArray  = new JSONArray(json);
-                for(int i = 0; i<jsonArray.length(); i++) {
-                    JSONObject jObject = jsonArray.getJSONObject(i);
-                    System.out.println(jObject.getString("text"));
-                    System.out.println(jObject.getString("author"));
+                JSONObject jObject = jsonArray.getJSONObject(random.nextInt(jsonArray.length()));
+                if (jObject.getString("author").equals("null")) {
+                    author = "Author Unknown";
+                } else {
+                    author = jObject.getString("author");
                 }
+                quote = jObject.getString("text") +"\n"+ "Author: " + author;
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-
+    return quote;
     }
 
-    public String getJSON() {
+    public String getJSON() { //Reads the motivational quotes api to a string.
         String response = null;
         try {
             URL url = new URL("https://type.fit/api/quotes");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
-            InputStream in = new BufferedInputStream(conn.getInputStream());
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
-            StringBuilder sb = new StringBuilder();
+            InputStream inputStream = new BufferedInputStream(conn.getInputStream());
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            StringBuilder stringBuilder = new StringBuilder();
             String line = null;
-            while((line = br.readLine()) != null){
-                sb.append(line).append("\n");
+            while((line = bufferedReader.readLine()) != null){
+                stringBuilder.append(line).append("\n");
             }
-            response = sb.toString();
-            in.close();
-
+            response = stringBuilder.toString();
+            inputStream.close();
         } catch (ProtocolException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {
@@ -70,10 +71,6 @@ public class Quotes {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
         return response;
     }
-
-
 }
