@@ -22,17 +22,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    Quotes asd = Quotes.getInstance();
-    FatData asdas = new FatData();
+    Quotes quotes = Quotes.getInstance();
 
-    public void apina(View v){
-        asd.readJSON();
+
+    public void QuoteAPIText(View v){
+        quotes.readJSON();
     }
 
 
-    public void monke(View v){
-        asdas.method();
-    }
+
 
     public void loadWeightLossActivity(View v){
         Intent intent = new Intent(MainActivity.this, Weightloss_Activity.class);
