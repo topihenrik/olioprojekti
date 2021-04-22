@@ -9,7 +9,8 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    TextView textWelcome;
+    Quotes quoteClass = Quotes.getInstance();
+    TextView textWelcome, quotes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,19 +19,10 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
         textWelcome = findViewById(R.id.textWelcome);
         textWelcome.setText("Welcome, " + DataHandler.getInstance().getAccount().firstName + "!");
+        TextView quotes = (TextView) findViewById(R.id.motivationalQuote);
+        quotes.setText(quoteClass.makeQuote());
 
     }
-
-
-    Quotes quotes = Quotes.getInstance();
-
-
-    public void QuoteAPIText(View v){
-        quotes.readJSON();
-    }
-
-
-
 
     public void loadWeightLossActivity(View v){
         Intent intent = new Intent(MainActivity.this, Weightloss_Activity.class);

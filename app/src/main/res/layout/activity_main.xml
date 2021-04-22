@@ -21,10 +21,11 @@
         android:id="@+id/buttonWaterCalc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="164dp"
         android:onClick="loadWaterCalcActivity"
         android:text="WaterCalc"
         app:layout_constraintEnd_toEndOf="@+id/textWelcome"
+        app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="@+id/textWelcome"
         app:layout_constraintTop_toBottomOf="@+id/textWelcome" />
 
@@ -44,11 +45,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="133dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="116dp"
         android:layout_marginEnd="134dp"
         android:text="Welcome, FIRSTNAME!"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/motivationalQuote"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintBottom_toTopOf="@+id/buttonWeightLoss"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.557" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
