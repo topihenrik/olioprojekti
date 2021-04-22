@@ -24,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
     public void loadWeightLossActivity(View v){
         Intent intent = new Intent(MainActivity.this, Weightloss_Activity.class);
         startActivity(intent);
