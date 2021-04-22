@@ -6,6 +6,7 @@ public class Account {
     String firstName, lastName, username, email, password, address, weight, height;
     byte[] salt;
     ArrayList<WaterData> waterDataArrayList = new ArrayList<>();
+    ArrayList<WeightData> weightDataArrayList = new ArrayList<>();
 
     public Account(String firstName, String lastName, String username, String email, String password, String address, String weight, String height, byte[] salt) {
         this.firstName = firstName;
@@ -31,14 +32,17 @@ public class Account {
         return salt;
     }
 
-    public void  getWaterDataArrayList(ArrayList<WaterData> waterDataArrayList) {
-        waterDataArrayList = this.waterDataArrayList;
-        return;
-    }
 
     public void setWaterDataArrayList(ArrayList<WaterData> waterDataArrayList) {
         this.waterDataArrayList = waterDataArrayList;
         return;
     }
+
+    public void setWeightDataArrayList(ArrayList<WeightData> weightDataArrayList) {
+        this.weightDataArrayList = weightDataArrayList;
+        return;
+    }
+
+
 
 }

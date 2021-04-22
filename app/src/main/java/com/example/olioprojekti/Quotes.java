@@ -1,8 +1,5 @@
 package com.example.olioprojekti;
 
-import android.util.Log;
-
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,7 +22,7 @@ public class Quotes {
     }
 
 
-    public String makeQuote (){ //Makes a json array from the string and then selects a random quote from that list and returns a String with the quote and author.
+    public String getRandomQuote(){ //Makes a json array from the string and then selects a random quote from that list and returns a String with the quote and author.
         String json = getJSON();
         Random random = new Random();
         String quote = null;
@@ -40,7 +37,7 @@ public class Quotes {
                 } else {
                     author = jObject.getString("author");
                 }
-                quote = jObject.getString("text") +"\n"+ "Author: " + author;
+                quote = jObject.getString("text") +"\n"+ " -" + author;
 
             } catch (JSONException e) {
                 e.printStackTrace();

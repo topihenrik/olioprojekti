@@ -1,15 +1,12 @@
 package com.example.olioprojekti;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import com.google.gson.Gson;
+import android.widget.Toast;
 import java.util.ArrayList;
 
 public class WaterCalculatorActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -38,14 +35,12 @@ public class WaterCalculatorActivity extends AppCompatActivity implements Adapte
     }
 
     public void saveWaterData(View v) {
-        //Gson gson = new Gson();
         WaterData waterData = new WaterData();
         waterData.WaterData(spinnerSelectionInt);
         waterDataArrayList.add(waterData);
         DataHandler.getInstance().getAccount().setWaterDataArrayList(waterDataArrayList);
         DataHandler.getInstance().updateAccount(this);
-        //String json = gson.toJson(waterDataArrayList);
-        //Log.d("JSON water data", json);
+        Toast.makeText(WaterCalculatorActivity.this, "Data added!", Toast.LENGTH_SHORT).show();
     }
 
 }

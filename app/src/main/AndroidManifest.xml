@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".WaterCalculatorActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>
-        <activity android:name=".Weightloss_Activity"></activity>
+        <activity android:name=".WeightlossActivity"></activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".LoginActivity">
             <intent-filter>

@@ -1,7 +1,6 @@
 package com.example.olioprojekti;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -20,12 +19,12 @@ public class MainActivity extends AppCompatActivity {
         textWelcome = findViewById(R.id.textWelcome);
         textWelcome.setText("Welcome, " + DataHandler.getInstance().getAccount().firstName + "!");
         TextView quotes = (TextView) findViewById(R.id.motivationalQuote);
-        quotes.setText(quoteClass.makeQuote());
+        quotes.setText(quoteClass.getRandomQuote());
 
     }
 
     public void loadWeightLossActivity(View v){
-        Intent intent = new Intent(MainActivity.this, Weightloss_Activity.class);
+        Intent intent = new Intent(MainActivity.this, WeightlossActivity.class);
         startActivity(intent);
     }
 
