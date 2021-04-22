@@ -2,6 +2,7 @@ package com.example.olioprojekti;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,13 +37,15 @@ public class WaterCalculatorActivity extends AppCompatActivity implements Adapte
 
     }
 
-    public void jsonSave(View v) {
-        Gson gson = new Gson();
+    public void saveWaterData(View v) {
+        //Gson gson = new Gson();
         WaterData waterData = new WaterData();
         waterData.WaterData(spinnerSelectionInt);
         waterDataArrayList.add(waterData);
-        String json = gson.toJson(waterDataArrayList);
-        Log.d("JSON water data", json);
+        DataHandler.getInstance().getAccount().setWaterDataArrayList(waterDataArrayList);
+        DataHandler.getInstance().updateAccount(this);
+        //String json = gson.toJson(waterDataArrayList);
+        //Log.d("JSON water data", json);
     }
 
 }
