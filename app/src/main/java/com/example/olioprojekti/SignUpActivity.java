@@ -15,6 +15,10 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -30,7 +34,7 @@ public class SignUpActivity extends AppCompatActivity {
     Context context = null;
     Gson gson = new Gson();
     EditText editFirstName, editLastName, editEmail, editUsername, editPassword, editHeight, editWeight, editRegion;
-    TextView textFailWeight, textFailHeight, textFailPassword, textFailFirstName, textFailLastName, textFailUserName;
+    TextView textFailWeight, textFailHeight, textFailPassword, textFailFirstName, textFailLastName, textFailUserName, textFailRegion;
     private static final String FILE_NAME = "data.json";
     ArrayList<Account> arrayList = new ArrayList<>();
     String json, regionJson;
@@ -54,6 +58,7 @@ public class SignUpActivity extends AppCompatActivity {
         textFailFirstName = findViewById(R.id.textFailFirstName);
         textFailLastName = findViewById(R.id.textFailLastName);
         textFailUserName = findViewById(R.id.textFailUserName);
+        textFailRegion = findViewById(R.id.textFailRegion);
         Button button = (Button) findViewById(R.id.buttonWeightLoss);
         context = SignUpActivity.this;
 
@@ -134,6 +139,19 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public boolean isRegionAcceptable(String region) {
+        JSONArray jsonArray  = null;
+        JSONObject jsonObject = null;
+        try {
+            jsonArray = new JSONArray(regionJson);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                jsonObject = jsonArray.getJSONObject(i);
+                if(region.equals(jsonObject.getString("classificationItemName"))) {
+                    return true;
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
@@ -184,8 +202,11 @@ public class SignUpActivity extends AppCompatActivity {
             textFailUserName.setText("");
         }
 
-        if (isRegionAcceptable(editRegion.getText().toString())) {
-
+        if (!(isRegionAcceptable(editRegion.getText().toString()))) {
+            textFailRegion.setText("Region is not correct.");
+            failcheck = true;
+        } else {
+            textFailRegion.setText("");
         }
 
         if (failcheck) {

@@ -198,4 +198,13 @@
         app:layout_constraintStart_toStartOf="@+id/editUsername"
         app:layout_constraintTop_toBottomOf="@+id/editUsername" />
 
+    <TextView
+        android:id="@+id/textFailRegion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#F44336"
+        app:layout_constraintEnd_toEndOf="@+id/editRegion"
+        app:layout_constraintStart_toStartOf="@+id/editRegion"
+        app:layout_constraintTop_toBottomOf="@+id/editRegion" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
