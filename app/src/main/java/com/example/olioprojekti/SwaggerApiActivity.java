@@ -21,7 +21,7 @@ public class SwaggerApiActivity extends AppCompatActivity {
 
 
     public void swgXMLButton(View view) {
-        sa.readXML();
+        sa.readJsonPage();
         return;
     }
 }

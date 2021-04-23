@@ -48,30 +48,23 @@ public class SwaggerApi {
         return;
     }
 
-    public void readXML(){
-        //Instantiating the URL class
+    public void readJsonPage(){
         URL url = null;
         try {
             url = new URL("https://ilmastodieetti.ymparisto.fi/ilmastodieetti/calculatorapi/v1/FoodCalculator?query.diet=omnivore");
+            Scanner sc = null;
+            sc = new Scanner(url.openStream());
+            StringBuffer sb = new StringBuffer();
+            while(sc.hasNext()) {
+                sb.append(sc.next());
+            }
+            String result = sb.toString();
+            Log.d("Contents: ", result);
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        }
-        //Retrieving the contents of the specified page
-        Scanner sc = null;
-        try {
-            sc = new Scanner(url.openStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //Instantiating the StringBuffer class to hold the result
-        StringBuffer sb = new StringBuffer();
-        while(sc.hasNext()) {
-            sb.append(sc.next());
-            //System.out.println(sc.next());
-        }
-        //Retrieving the String from the String Buffer object
-        String result = sb.toString();
-        Log.d("Contents: ", result);
     }
 
 }
