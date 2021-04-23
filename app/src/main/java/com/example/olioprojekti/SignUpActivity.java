@@ -20,6 +20,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -28,11 +29,12 @@ public class SignUpActivity extends AppCompatActivity {
     AccountManager am = AccountManager.getInstance();
     Context context = null;
     Gson gson = new Gson();
-    EditText editFirstName, editLastName, editEmail, editUsername, editPassword, editHeight, editWeight, editAddress;
+    EditText editFirstName, editLastName, editEmail, editUsername, editPassword, editHeight, editWeight, editRegion;
     TextView textFailWeight, textFailHeight, textFailPassword, textFailFirstName, textFailLastName, textFailUserName;
     private static final String FILE_NAME = "data.json";
     ArrayList<Account> arrayList = new ArrayList<>();
-    String json;
+    String json, regionJson;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +46,7 @@ public class SignUpActivity extends AppCompatActivity {
         editPassword = findViewById(R.id.editPassword);
         editHeight = findViewById(R.id.editHeight2);
         editWeight = findViewById(R.id.editWeight);
-        editAddress = findViewById(R.id.editAddress);
+        editRegion = findViewById(R.id.editRegion);
 
         textFailWeight = findViewById(R.id.textFailWeight);
         textFailHeight = findViewById(R.id.textFailHeight);
@@ -82,6 +84,22 @@ public class SignUpActivity extends AppCompatActivity {
             }
         }
 
+        // LOAD LIST OF REAGIONS from regionlist.json.
+        try {
+            InputStream is = this.getAssets().open("regionlist.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            regionJson = new String(buffer, "UTF-8");
+            //Log.d("regionJson", regionJson);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        //
+
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,6 +131,10 @@ public class SignUpActivity extends AppCompatActivity {
         }
         return false;
 
+    }
+
+    public boolean isRegionAcceptable(String region) {
+        return false;
     }
 
     // USER HAS FILLED SOME INFORMATION AND PRESSES THE "SIGN UP" BUTTON.
@@ -162,6 +184,10 @@ public class SignUpActivity extends AppCompatActivity {
             textFailUserName.setText("");
         }
 
+        if (isRegionAcceptable(editRegion.getText().toString())) {
+
+        }
+
         if (failcheck) {
             return;
         }
@@ -172,7 +198,7 @@ public class SignUpActivity extends AppCompatActivity {
                 arrayList = gson.fromJson(json, userListType);
             }
 
-            Account account = am.register(editFirstName.getText().toString(), editLastName.getText().toString(), editUsername.getText().toString(), editEmail.getText().toString(), editPassword.getText().toString(), editAddress.getText().toString() , editWeight.getText().toString(), editHeight.getText().toString());
+            Account account = am.register(editFirstName.getText().toString(), editLastName.getText().toString(), editUsername.getText().toString(), editEmail.getText().toString(), editPassword.getText().toString(), editRegion.getText().toString() , editWeight.getText().toString(), editHeight.getText().toString());
             arrayList.add(account);
 
             FileOutputStream fos = null;

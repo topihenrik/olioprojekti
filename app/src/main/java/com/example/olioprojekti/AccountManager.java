@@ -39,10 +39,10 @@ public class AccountManager {
     }
 
     // CREATES A NEW ACCOUNT OBJECT FOR A NEW USER.
-    public Account register(String fName, String lName, String userName, String eMail, String passWord, String userAddress, String Weight, String Height) {
+    public Account register(String fName, String lName, String userName, String eMail, String passWord, String userRegion, String Weight, String Height) {
         byte[] salt = PasswordHash.getSalt();
         String generatedPassword = PasswordHash.generatePassword(passWord, salt);
-        Account account = new Account(fName, lName, userName, eMail, generatedPassword, userAddress, Weight, Height, salt);
+        Account account = new Account(fName, lName, userName, eMail, generatedPassword, userRegion, Weight, Height, salt);
         return account;
     }
 
