@@ -21,12 +21,12 @@
         android:id="@+id/buttonWaterCalc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:onClick="loadWaterCalcActivity"
         android:text="WaterCalc"
-        app:layout_constraintEnd_toEndOf="@+id/textWelcome"
-        app:layout_constraintStart_toStartOf="@+id/textWelcome"
-        app:layout_constraintTop_toBottomOf="@+id/textWelcome" />
+        app:layout_constraintEnd_toEndOf="@+id/motivationalQuote"
+        app:layout_constraintStart_toStartOf="@+id/motivationalQuote"
+        app:layout_constraintTop_toBottomOf="@+id/motivationalQuote" />
 
     <Button
         android:id="@+id/buttonLogout"
@@ -44,11 +44,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="133dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="116dp"
         android:layout_marginEnd="134dp"
+        android:fontFamily="monospace"
         android:text="Welcome, FIRSTNAME!"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/motivationalQuote"
+        android:layout_width="300dp"
+        android:layout_height="120dp"
+
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="81dp"
+        android:fontFamily="monospace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textQuoteHeader" />
+
+    <TextView
+        android:id="@+id/textQuoteHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="monospace"
+        android:text="Quote for thought:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textWelcome" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

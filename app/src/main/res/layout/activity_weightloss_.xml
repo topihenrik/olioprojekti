@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Weightloss_Activity">
+    tools:context=".WeightlossActivity">
 
     <EditText
         android:id="@+id/edit_text"
@@ -25,7 +25,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="72dp"
         android:layout_marginBottom="-48dp"
-        android:onClick="save"
+        android:onClick="saveWeightData"
         android:text="save" />
 
 </RelativeLayout>
