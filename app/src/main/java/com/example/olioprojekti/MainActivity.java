@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         textWelcome = findViewById(R.id.textWelcome);
-        textWelcome.setText("Welcome, " + DataHandler.getInstance().getAccount().firstName + "!");
+        textWelcome.setText("Welcome, " + DataHandler.getInstance().getAccount().getFirstName() + "!");
         TextView quotes = (TextView) findViewById(R.id.motivationalQuote);
         quotes.setText(quoteClass.getRandomQuote());
 
