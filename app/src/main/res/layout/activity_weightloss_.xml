@@ -28,4 +28,13 @@
         android:onClick="saveWeightData"
         android:text="save" />
 
+    <TextView
+        android:id="@+id/BMI_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="102dp"
+        android:fontFamily="monospace" />
+
 </RelativeLayout>

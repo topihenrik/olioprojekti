@@ -25,6 +25,10 @@ public class Account {
         return username;
     }
 
+    public String getHeight() {
+        return height;
+    }
+
     public String getPassword() {
         return password;
     }
