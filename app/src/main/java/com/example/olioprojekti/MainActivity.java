@@ -39,4 +39,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void loadTHLActivity(View v) {
+        Intent intent = new Intent(MainActivity.this, THLActivity.class);
+        startActivity(intent);
+    }
+
 }
