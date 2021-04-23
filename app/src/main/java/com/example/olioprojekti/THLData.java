@@ -11,7 +11,8 @@ import java.util.Scanner;
 
 
 public class THLData {
-    String testRegion = "497";
+    //String testRegion = "497";
+    String userRegion = DataHandler.getInstance().getAccount().getRegionID();
 
     public String readJsonSmokerPage(){
         URL url = null;
@@ -40,7 +41,7 @@ public class THLData {
             jsonArray = new JSONArray(readJsonSmokerPage());
             for (int i = 0; i < jsonArray.length(); i++) {
                 jsonObject = jsonArray.getJSONObject(i);
-                if(testRegion.equals(jsonObject.getString("region"))) {
+                if(userRegion.equals(jsonObject.getString("region"))) {
                     break;
                 } else {
                     jsonObject = null;
@@ -79,7 +80,7 @@ public class THLData {
             jsonArray = new JSONArray(readJsonAlcoholPage());
             for (int i = 0; i < jsonArray.length(); i++) {
                 jsonObject = jsonArray.getJSONObject(i);
-                if(testRegion.equals(jsonObject.getString("region"))) {
+                if(userRegion.equals(jsonObject.getString("region"))) {
                     break;
                 } else {
                     jsonObject = null;

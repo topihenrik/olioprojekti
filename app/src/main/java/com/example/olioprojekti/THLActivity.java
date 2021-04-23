@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 public class THLActivity extends AppCompatActivity {
     THLData thlData = new THLData();
-    TextView thlSmokerText, thlAlcoholText;
+    TextView thlSmokerText, thlAlcoholText, textUserRegion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,17 +19,19 @@ public class THLActivity extends AppCompatActivity {
         JSONObject thlDataAlcoholObject = thlData.jsonAlcoholArray();
         thlSmokerText = (TextView) findViewById(R.id.thlSmokerText);
         thlAlcoholText = (TextView) findViewById(R.id.thlAlcoholText);
+        textUserRegion = findViewById(R.id.textUserRegion);
+        textUserRegion.setText("Your region is " + DataHandler.getInstance().getAccount().getRegion());
 
         try {
             if (thlDataSmokerObject != null) {
-                thlSmokerText.setText("Alueellasi " + thlDataSmokerObject.getString("value") + "% asukkaista käyttää päivittäin tupakkaa.");
+                thlSmokerText.setText("In your area " + thlDataSmokerObject.getString("value") + "% of the population uses cigarettes daily.");
             } else {
-                thlSmokerText.setText("Alueelta ei löytynyt tietoja tupakankäytöstä.");
+                thlSmokerText.setText("There is no information related to cigarette use in your area.");
             }
             if (thlDataAlcoholObject != null) {
-                thlAlcoholText.setText("Alkoholinmyynti asuinalueellasi on " + thlDataAlcoholObject.getString("value") + " annosta per asukas.");
+                thlAlcoholText.setText("Alcohol usage in your area is " + thlDataAlcoholObject.getString("value") + " servings per inhabitant");
             } else {
-                thlAlcoholText.setText("Alueeltasi ei löytynyt tietoja alkoholinkäytöstä.");
+                thlAlcoholText.setText("There is no information related to alcohol usage in your area.");
             }
         } catch (JSONException e) {
             e.printStackTrace();

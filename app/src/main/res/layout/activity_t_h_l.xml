@@ -7,16 +7,15 @@
     tools:context=".THLActivity">
 
     <TextView
-        android:id="@+id/thlDataOtsikko"
+        android:id="@+id/thlDataHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="173dp"
-        android:layout_marginTop="73dp"
-        android:layout_marginEnd="180dp"
-        android:layout_marginBottom="639dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="118dp"
+        android:layout_marginEnd="163dp"
         android:fontFamily="monospace"
         android:text="THL DATA"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,22 +24,30 @@
         android:id="@+id/thlSmokerText"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="540dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="monospace"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/textUserRegion"
+        app:layout_constraintStart_toStartOf="@+id/textUserRegion"
+        app:layout_constraintTop_toBottomOf="@+id/textUserRegion" />
 
     <TextView
         android:id="@+id/thlAlcoholText"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="384dp"
+        android:layout_marginTop="120dp"
         android:fontFamily="monospace"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/thlSmokerText"
+        app:layout_constraintStart_toStartOf="@+id/thlSmokerText"
+        app:layout_constraintTop_toBottomOf="@+id/thlSmokerText" />
+
+    <TextView
+        android:id="@+id/textUserRegion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="monospace"
+        app:layout_constraintEnd_toEndOf="@+id/thlDataHeader"
+        app:layout_constraintStart_toStartOf="@+id/thlDataHeader"
+        app:layout_constraintTop_toBottomOf="@+id/thlDataHeader" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

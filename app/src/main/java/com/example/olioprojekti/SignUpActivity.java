@@ -138,7 +138,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-    public boolean isRegionAcceptable(String region) {
+    public String isRegionAcceptable(String region) {
         JSONArray jsonArray  = null;
         JSONObject jsonObject = null;
         try {
@@ -146,13 +146,13 @@ public class SignUpActivity extends AppCompatActivity {
             for (int i = 0; i < jsonArray.length(); i++) {
                 jsonObject = jsonArray.getJSONObject(i);
                 if(region.equals(jsonObject.getString("classificationItemName"))) {
-                    return true;
+                    return jsonObject.getString("code").replaceAll("\u0027", "");
                 }
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
 
     // USER HAS FILLED SOME INFORMATION AND PRESSES THE "SIGN UP" BUTTON.
@@ -202,7 +202,8 @@ public class SignUpActivity extends AppCompatActivity {
             textFailUserName.setText("");
         }
 
-        if (!(isRegionAcceptable(editRegion.getText().toString()))) {
+        String regionID;
+        if ((regionID = isRegionAcceptable(editRegion.getText().toString())) == null) {
             textFailRegion.setText("Region is not correct.");
             failcheck = true;
         } else {
@@ -219,7 +220,7 @@ public class SignUpActivity extends AppCompatActivity {
                 arrayList = gson.fromJson(json, userListType);
             }
 
-            Account account = am.register(editFirstName.getText().toString(), editLastName.getText().toString(), editUsername.getText().toString(), editEmail.getText().toString(), editPassword.getText().toString(), editRegion.getText().toString() , editWeight.getText().toString(), editHeight.getText().toString());
+            Account account = am.register(editFirstName.getText().toString(), editLastName.getText().toString(), editUsername.getText().toString(), editEmail.getText().toString(), editPassword.getText().toString(), editRegion.getText().toString(), regionID, editWeight.getText().toString(), editHeight.getText().toString());
             arrayList.add(account);
 
             FileOutputStream fos = null;

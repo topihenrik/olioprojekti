@@ -10,18 +10,7 @@
         android:id="@+id/buttonWeightLoss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:onClick="loadWeightLossActivity"
-        android:text="Weightloss"
-        app:layout_constraintEnd_toEndOf="@+id/buttonWaterCalc"
-        app:layout_constraintStart_toStartOf="@+id/buttonWaterCalc"
-        app:layout_constraintTop_toBottomOf="@+id/buttonWaterCalc" />
-
-    <Button
-        android:id="@+id/buttonWeightLoss2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="30dp"
         android:onClick="loadWeightLossActivity"
         android:text="Weightloss"
         app:layout_constraintEnd_toEndOf="@+id/buttonWaterCalc"
@@ -92,13 +81,11 @@
         android:id="@+id/thlData"
         android:layout_width="117dp"
         android:layout_height="46dp"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:onClick="loadTHLActivity"
         android:text="THL DATA"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonWeightLoss"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="@+id/buttonWeightLoss"
+        app:layout_constraintStart_toStartOf="@+id/buttonWeightLoss"
+        app:layout_constraintTop_toBottomOf="@+id/buttonWeightLoss" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
