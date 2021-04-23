@@ -41,6 +41,11 @@ public class Weightloss_Activity extends AppCompatActivity {
         }
     }
 
+    public int calculateBMI(){
+        double constant = 1.3;
+        double height = DataHandler
+    }
+
     public void save(View v) {
         Gson gson = new Gson();
         String text = mEditText.getText().toString();
@@ -74,36 +79,5 @@ public class Weightloss_Activity extends AppCompatActivity {
         }
     }
 
-    public void load(View v){
-        FileInputStream fis = null;
-
-        try {
-            fis = openFileInput(FILE_NAME);
-            InputStreamReader isr = new InputStreamReader(fis);
-            BufferedReader br = new BufferedReader(isr);
-            StringBuilder sb = new StringBuilder();
-            String text;
-
-            while((text = br.readLine()) != null){
-                sb.append(text).append("\n");
-            }
-
-            mEditText.setText(sb.toString());
-
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (fis != null){
-                try {
-                    fis.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
 
 }
