@@ -23,6 +23,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void loadSwaggerApiActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, SwaggerApiActivity.class);
+        startActivity(intent);
+    }
+
     public void loadWeightLossActivity(View v){
         Intent intent = new Intent(MainActivity.this, WeightlossActivity.class);
         startActivity(intent);
