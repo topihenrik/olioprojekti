@@ -6,221 +6,348 @@
     android:layout_height="match_parent"
     tools:context=".SwaggerApiActivity">
 
-    <Button
-        android:id="@+id/swgButtonTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="swgXMLButton"
-        android:text="Json"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/swgTextRestaurantSpeding"
-        app:layout_constraintStart_toStartOf="@+id/swgTextRestaurantSpeding"
-        app:layout_constraintTop_toBottomOf="@+id/swgTextRestaurantSpeding" />
 
     <TextView
         android:id="@+id/swgTextExplanation"
         android:layout_width="290dp"
         android:layout_height="60dp"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="168dp"
+        android:layout_marginTop="30dp"
         android:text="Calculates the emission estimate in kg CO2 eq. / year for given food consumption habits."
+        app:layout_constraintEnd_toEndOf="@+id/swgTextHeader"
+        app:layout_constraintStart_toStartOf="@+id/swgTextHeader"
+        app:layout_constraintTop_toBottomOf="@+id/swgTextHeader" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="5dp"
+        android:fadeScrollbars="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/swgTextExplanation">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/swgTextBeefLevel"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="5dp"
+                android:text="Percentage of Beef consumption compared to Finnish average (19.3 kg)."
+                app:layout_constraintEnd_toEndOf="@+id/swgTextLowCarbonPref"
+                app:layout_constraintStart_toStartOf="@+id/swgTextLowCarbonPref"
+                app:layout_constraintTop_toBottomOf="@+id/swgTextLowCarbonPref" />
+
+            <SeekBar
+                android:id="@+id/swgSeekBarBeef"
+                android:layout_width="80dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="60dp"
+                app:layout_constraintEnd_toEndOf="@+id/swgSwitchLowCarbonPref"
+                app:layout_constraintStart_toStartOf="@+id/swgSwitchLowCarbonPref"
+                app:layout_constraintTop_toBottomOf="@+id/swgSwitchLowCarbonPref" />
+
+            <TextView
+                android:id="@+id/swgTextLowCarbonPref"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="5dp"
+                android:text="Do you prefer i.e. seasonal produce or certified low emission foods?"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/swgTextDiet" />
+
+            <TextView
+                android:id="@+id/swgTextFishLevel"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="5dp"
+                android:text="Percentage of Fish consumption compared to Finnish average (14.9 kg)."
+                app:layout_constraintEnd_toEndOf="@+id/swgTextBeefLevel"
+                app:layout_constraintStart_toStartOf="@+id/swgTextBeefLevel"
+                app:layout_constraintTop_toBottomOf="@+id/swgTextBeefLevel" />
+
+            <TextView
+                android:id="@+id/swgTextPorkPoltryLvl"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="5dp"
+                android:text="Percentage of Pork and Poultry consumption compared to Finnish average (58.1 kg)."
+                app:layout_constraintEnd_toEndOf="@+id/swgTextFishLevel"
+                app:layout_constraintStart_toStartOf="@+id/swgTextFishLevel"
+                app:layout_constraintTop_toBottomOf="@+id/swgTextFishLevel" />
+
+            <TextView
+                android:id="@+id/swgTextDairyLevel"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="5dp"
+                android:text="Percentage of Dairy consumption compared to Finnish average (110.2 kg."
+                app:layout_constraintEnd_toEndOf="@+id/swgTextPorkPoltryLvl"
+                app:layout_constraintStart_toStartOf="@+id/swgTextPorkPoltryLvl"
+                app:layout_constraintTop_toBottomOf="@+id/swgTextPorkPoltryLvl" />
+
+            <TextView
+                android:id="@+id/swgTextCheeseLvl"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="5dp"
+                android:text="Percentage of Cheese consumption compared to Finnish average (25.7 kg)."
+                app:layout_constraintEnd_toEndOf="@+id/swgTextDairyLevel"
+                app:layout_constraintStart_toStartOf="@+id/swgTextDairyLevel"
+                app:layout_constraintTop_toBottomOf="@+id/swgTextDairyLevel" />
+
+            <TextView
+                android:id="@+id/swgTextRiceLvl"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="5dp"
+                android:text="Percentage of Rice consumption compared to Finnish average (6.0 kg)."
+                app:layout_constraintEnd_toEndOf="@+id/swgTextCheeseLvl"
+                app:layout_constraintStart_toStartOf="@+id/swgTextCheeseLvl"
+                app:layout_constraintTop_toBottomOf="@+id/swgTextCheeseLvl" />
+
+            <TextView
+                android:id="@+id/swgTextEggLvl"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="8dp"
+                android:text="Percentage of Egg consumption compared to Finnish average (4.5 eggs). (Eggs in a week)"
+                app:layout_constraintEnd_toEndOf="@+id/swgTextRiceLvl"
+                app:layout_constraintStart_toStartOf="@+id/swgTextRiceLvl"
+                app:layout_constraintTop_toBottomOf="@+id/swgTextRiceLvl" />
+
+            <TextView
+                android:id="@+id/swgTextWinterSaladLvl"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="5dp"
+                android:text="Percentage of winter salad (greenhouse grown) consumption compared to Finnish average."
+                app:layout_constraintEnd_toEndOf="@+id/swgTextEggLvl"
+                app:layout_constraintStart_toStartOf="@+id/swgTextEggLvl"
+                app:layout_constraintTop_toBottomOf="@+id/swgTextEggLvl" />
+
+            <TextView
+                android:id="@+id/swgTextRestaurantSpeding"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="5dp"
+                android:text="Monthly restaurant spending, in euros."
+                app:layout_constraintEnd_toEndOf="@+id/swgTextWinterSaladLvl"
+                app:layout_constraintStart_toStartOf="@+id/swgTextWinterSaladLvl"
+                app:layout_constraintTop_toBottomOf="@+id/swgTextWinterSaladLvl" />
+
+            <SeekBar
+                android:id="@+id/swgSeekBarFish"
+                android:layout_width="80dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="60dp"
+                app:layout_constraintEnd_toEndOf="@+id/swgSeekBarBeef"
+                app:layout_constraintStart_toStartOf="@+id/swgSeekBarBeef"
+                app:layout_constraintTop_toBottomOf="@+id/swgSeekBarBeef" />
+
+            <SeekBar
+                android:id="@+id/swgSeekBarPorkNPoultry"
+                android:layout_width="80dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="60dp"
+                app:layout_constraintEnd_toEndOf="@+id/swgSeekBarFish"
+                app:layout_constraintStart_toStartOf="@+id/swgSeekBarFish"
+                app:layout_constraintTop_toBottomOf="@+id/swgSeekBarFish" />
+
+            <SeekBar
+                android:id="@+id/swgSeekBarDairy"
+                android:layout_width="80dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="60dp"
+                app:layout_constraintEnd_toEndOf="@+id/swgSeekBarPorkNPoultry"
+                app:layout_constraintStart_toStartOf="@+id/swgSeekBarPorkNPoultry"
+                app:layout_constraintTop_toBottomOf="@+id/swgSeekBarPorkNPoultry" />
+
+            <SeekBar
+                android:id="@+id/swgSeekBarCheese"
+                android:layout_width="80dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="60dp"
+                app:layout_constraintEnd_toEndOf="@+id/swgSeekBarDairy"
+                app:layout_constraintStart_toStartOf="@+id/swgSeekBarDairy"
+                app:layout_constraintTop_toBottomOf="@+id/swgSeekBarDairy" />
+
+            <SeekBar
+                android:id="@+id/swgSeekBarRice"
+                android:layout_width="80dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="60dp"
+                app:layout_constraintEnd_toEndOf="@+id/swgSeekBarCheese"
+                app:layout_constraintStart_toStartOf="@+id/swgSeekBarCheese"
+                app:layout_constraintTop_toBottomOf="@+id/swgSeekBarCheese" />
+
+            <SeekBar
+                android:id="@+id/swgSeekBarEgg"
+                android:layout_width="80dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="60dp"
+                app:layout_constraintEnd_toEndOf="@+id/swgSeekBarRice"
+                app:layout_constraintStart_toStartOf="@+id/swgSeekBarRice"
+                app:layout_constraintTop_toBottomOf="@+id/swgSeekBarRice" />
+
+            <SeekBar
+                android:id="@+id/swgSeekBarWinterSalad"
+                android:layout_width="80dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="60dp"
+                app:layout_constraintEnd_toEndOf="@+id/swgSeekBarEgg"
+                app:layout_constraintStart_toStartOf="@+id/swgSeekBarEgg"
+                app:layout_constraintTop_toBottomOf="@+id/swgSeekBarEgg" />
+
+            <EditText
+                android:id="@+id/swgEditSpending"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="48dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="0"
+                app:layout_constraintEnd_toEndOf="@+id/swgSeekBarWinterSalad"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/swgSeekBarWinterSalad"
+                app:layout_constraintTop_toBottomOf="@+id/swgSeekBarWinterSalad" />
+
+            <Switch
+                android:id="@+id/swgSwitchLowCarbonPref"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintStart_toEndOf="@+id/swgTextLowCarbonPref"
+                app:layout_constraintTop_toBottomOf="@+id/swgSpinnerDiet" />
+
+            <TextView
+                android:id="@+id/swgSBTextBeef"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="126dp"
+                android:text="0%"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/swgSeekBarBeef"
+                app:layout_constraintTop_toBottomOf="@+id/swgSpinnerDiet" />
+
+            <TextView
+                android:id="@+id/swgSBTextFish"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="60dp"
+                android:text="0%"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/swgSeekBarFish"
+                app:layout_constraintTop_toBottomOf="@+id/swgSBTextBeef" />
+
+            <TextView
+                android:id="@+id/swgSBTextPorkNPoultry"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="60dp"
+                android:text="0%"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/swgSeekBarPorkNPoultry"
+                app:layout_constraintTop_toBottomOf="@+id/swgSBTextFish" />
+
+            <TextView
+                android:id="@+id/swgSBTextDairy"
+                android:layout_width="18dp"
+                android:layout_height="17dp"
+                android:layout_marginTop="60dp"
+                android:text="0%"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/swgSeekBarDairy"
+                app:layout_constraintTop_toBottomOf="@+id/swgSBTextPorkNPoultry" />
+
+            <TextView
+                android:id="@+id/swgSBTextCheese"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="60dp"
+                android:text="0%"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/swgSeekBarCheese"
+                app:layout_constraintTop_toBottomOf="@+id/swgSBTextDairy" />
+
+            <TextView
+                android:id="@+id/swgSBTextRice"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="60dp"
+                android:text="0%"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/swgSeekBarRice"
+                app:layout_constraintTop_toBottomOf="@+id/swgSBTextCheese" />
+
+            <TextView
+                android:id="@+id/swgSBTextEgg"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="61dp"
+                android:text="0%"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/swgSeekBarEgg"
+                app:layout_constraintTop_toBottomOf="@+id/swgSBTextRice" />
+
+            <TextView
+                android:id="@+id/swgSBTextWinterSalad"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="61dp"
+                android:text="0%"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/swgSeekBarWinterSalad"
+                app:layout_constraintTop_toBottomOf="@+id/swgSBTextEgg" />
+
+            <TextView
+                android:id="@+id/swgTextDiet"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:text="What kind of diet do you want to use?"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/swgSpinnerDiet"
+                android:layout_width="140dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="25dp"
+                app:layout_constraintStart_toEndOf="@+id/swgTextDiet"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/swgButtonSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="swgSubmitButton"
+        android:text="Submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:id="@+id/swgTextHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="SYKE Climate Diet"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/swgTextBeefLevel"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:text="Percentage of Beef consumption compared to Finnish average (19.3 kg)."
-        app:layout_constraintEnd_toEndOf="@+id/swgTextLowCarbonPref"
-        app:layout_constraintStart_toStartOf="@+id/swgTextLowCarbonPref"
-        app:layout_constraintTop_toBottomOf="@+id/swgTextLowCarbonPref" />
-
-    <SeekBar
-        android:id="@+id/swgSeekBarBeef"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="36dp"
-        app:layout_constraintEnd_toEndOf="@+id/switch1"
-        app:layout_constraintStart_toStartOf="@+id/switch1"
-        app:layout_constraintTop_toBottomOf="@+id/switch1" />
-
-    <TextView
-        android:id="@+id/swgTextLowCarbonPref"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="120dp"
-        android:text="Does you prefer i.e. seasonal produce or certified low emission foods?"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/swgTextExplanation" />
-
-    <TextView
-        android:id="@+id/swgTextFishLevel"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:text="Percentage of Fish consumption compared to Finnish average (14.9 kg)."
-        app:layout_constraintEnd_toEndOf="@+id/swgTextBeefLevel"
-        app:layout_constraintStart_toStartOf="@+id/swgTextBeefLevel"
-        app:layout_constraintTop_toBottomOf="@+id/swgTextBeefLevel" />
-
-    <TextView
-        android:id="@+id/swgTextPorkPoltryLvl"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:text="Percentage of Pork and Poultry consumption compared to Finnish average (58.1 kg)."
-        app:layout_constraintEnd_toEndOf="@+id/swgTextFishLevel"
-        app:layout_constraintStart_toStartOf="@+id/swgTextFishLevel"
-        app:layout_constraintTop_toBottomOf="@+id/swgTextFishLevel" />
-
-    <TextView
-        android:id="@+id/swgTextDairyLevel"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:text="Percentage of Dairy consumption compared to Finnish average (110.2 kg."
-        app:layout_constraintEnd_toEndOf="@+id/swgTextPorkPoltryLvl"
-        app:layout_constraintStart_toStartOf="@+id/swgTextPorkPoltryLvl"
-        app:layout_constraintTop_toBottomOf="@+id/swgTextPorkPoltryLvl" />
-
-    <TextView
-        android:id="@+id/swgTextCheeseLvl"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:text="Percentage of Cheese consumption compared to Finnish average (25.7 kg)."
-        app:layout_constraintEnd_toEndOf="@+id/swgTextDairyLevel"
-        app:layout_constraintStart_toStartOf="@+id/swgTextDairyLevel"
-        app:layout_constraintTop_toBottomOf="@+id/swgTextDairyLevel" />
-
-    <TextView
-        android:id="@+id/swgTextRiceLvl"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:text="Percentage of Rice consumption compared to Finnish average (6.0 kg)."
-        app:layout_constraintEnd_toEndOf="@+id/swgTextCheeseLvl"
-        app:layout_constraintStart_toStartOf="@+id/swgTextCheeseLvl"
-        app:layout_constraintTop_toBottomOf="@+id/swgTextCheeseLvl" />
-
-    <TextView
-        android:id="@+id/swgTextEggLvl"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:text="Percentage of Egg consumption compared to Finnish average (4.5 eggs). (Eggs in a week)"
-        app:layout_constraintEnd_toEndOf="@+id/swgTextRiceLvl"
-        app:layout_constraintStart_toStartOf="@+id/swgTextRiceLvl"
-        app:layout_constraintTop_toBottomOf="@+id/swgTextRiceLvl" />
-
-    <TextView
-        android:id="@+id/swgTextWinterSaladLvl"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:text="Percentage of winter salad (greenhouse grown) consumption compared to Finnish average."
-        app:layout_constraintEnd_toEndOf="@+id/swgTextEggLvl"
-        app:layout_constraintStart_toStartOf="@+id/swgTextEggLvl"
-        app:layout_constraintTop_toBottomOf="@+id/swgTextEggLvl" />
-
-    <TextView
-        android:id="@+id/swgTextRestaurantSpeding"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:text="Monthly restaurant spending, in euros."
-        app:layout_constraintEnd_toEndOf="@+id/swgTextWinterSaladLvl"
-        app:layout_constraintStart_toStartOf="@+id/swgTextWinterSaladLvl"
-        app:layout_constraintTop_toBottomOf="@+id/swgTextWinterSaladLvl" />
-
-    <SeekBar
-        android:id="@+id/swgSeekBarFish"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="35dp"
-        app:layout_constraintEnd_toEndOf="@+id/swgSeekBarBeef"
-        app:layout_constraintStart_toStartOf="@+id/swgSeekBarBeef"
-        app:layout_constraintTop_toBottomOf="@+id/swgSeekBarBeef" />
-
-    <SeekBar
-        android:id="@+id/swgSeekBarPorkNPoultry"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="35dp"
-        app:layout_constraintEnd_toEndOf="@+id/swgSeekBarFish"
-        app:layout_constraintStart_toStartOf="@+id/swgSeekBarFish"
-        app:layout_constraintTop_toBottomOf="@+id/swgSeekBarFish" />
-
-    <SeekBar
-        android:id="@+id/swgSeekBarDairy"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="35dp"
-        app:layout_constraintEnd_toEndOf="@+id/swgSeekBarPorkNPoultry"
-        app:layout_constraintStart_toStartOf="@+id/swgSeekBarPorkNPoultry"
-        app:layout_constraintTop_toBottomOf="@+id/swgSeekBarPorkNPoultry" />
-
-    <SeekBar
-        android:id="@+id/swgSeekBarCheese"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="35dp"
-        app:layout_constraintEnd_toEndOf="@+id/swgSeekBarDairy"
-        app:layout_constraintStart_toStartOf="@+id/swgSeekBarDairy"
-        app:layout_constraintTop_toBottomOf="@+id/swgSeekBarDairy" />
-
-    <SeekBar
-        android:id="@+id/swgSeekBarRice"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="35dp"
-        app:layout_constraintEnd_toEndOf="@+id/swgSeekBarCheese"
-        app:layout_constraintStart_toStartOf="@+id/swgSeekBarCheese"
-        app:layout_constraintTop_toBottomOf="@+id/swgSeekBarCheese" />
-
-    <SeekBar
-        android:id="@+id/swgSeekBarEgg"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="35dp"
-        app:layout_constraintEnd_toEndOf="@+id/swgSeekBarRice"
-        app:layout_constraintStart_toStartOf="@+id/swgSeekBarRice"
-        app:layout_constraintTop_toBottomOf="@+id/swgSeekBarRice" />
-
-    <SeekBar
-        android:id="@+id/swgSeekBarWinterSalad"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="35dp"
-        app:layout_constraintEnd_toEndOf="@+id/swgSeekBarEgg"
-        app:layout_constraintStart_toStartOf="@+id/swgSeekBarEgg"
-        app:layout_constraintTop_toBottomOf="@+id/swgSeekBarEgg" />
-
-    <EditText
-        android:id="@+id/swgEditSpending"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="23dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/swgSeekBarWinterSalad"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/swgSeekBarWinterSalad"
-        app:layout_constraintTop_toBottomOf="@+id/swgSeekBarWinterSalad" />
-
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="29dp"
-        app:layout_constraintStart_toEndOf="@+id/swgTextLowCarbonPref"
-        app:layout_constraintTop_toBottomOf="@+id/swgTextExplanation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

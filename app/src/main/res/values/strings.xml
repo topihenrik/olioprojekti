@@ -6,4 +6,9 @@
         <item>350</item>
         <item>500</item>
     </string-array>
+    <string-array name="dietOptions">
+        <item>omnivore</item>
+        <item>vegan</item>
+        <item>vegetarian</item>
+    </string-array>
 </resources>
