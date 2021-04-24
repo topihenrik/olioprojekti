@@ -7,4 +7,8 @@ public class WeightData {
         this.date = date;
         this.weight = weight;
     }
+
+    public String getWeight() { return weight; }
+
+    public String getDate() { return date; }
 }

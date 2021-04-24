@@ -19,12 +19,18 @@ import com.google.gson.Gson;
 // ONCE THE USER HAS LOGGED IN, THIS IS WHERE THE ACCOUNT INFORMATION RESIDES.
 // APPLICATION UPDATES THE USERS ACCOUNT INFORMATION THROUGH THIS CLASS.
 public class DataHandler {
-    private static DataHandler single = new DataHandler();
-    private static Account account;
-    public static DataHandler getInstance() {return single;}
     private static final String FILE_NAME = "data.json";
-    ArrayList<Account> arrayList = new ArrayList<>();
-    String json;
+    private String json;
+
+    private static Account account = null;
+    public void setAccount(Account account) {this.account = account;}
+    public Account getAccount() {return this.account;}
+
+    private ArrayList<Account> arrayList = new ArrayList<>();
+
+    private static DataHandler single = new DataHandler();
+    public static DataHandler getInstance() {return single;}
+
     Gson gson = new Gson();
     public void updateAccount(Context context) {
         FileInputStream fis = null;
@@ -82,8 +88,7 @@ public class DataHandler {
         return;
     }
 
-    public void setAccount(Account account) {this.account = account;}
-    public Account getAccount() {return this.account;}
+
 
 
 
