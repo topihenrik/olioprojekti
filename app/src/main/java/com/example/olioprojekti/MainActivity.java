@@ -49,4 +49,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void loadInputLogActivity(View v) {
+        Intent intent = new Intent(MainActivity.this, InputLogActivity.class);
+        startActivity(intent);
+    }
+
 }

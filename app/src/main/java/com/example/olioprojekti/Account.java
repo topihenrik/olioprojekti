@@ -60,6 +60,8 @@ public class Account {
         return;
     }
 
+    public ArrayList<WeightData> getWeightDataArrayList() { return weightDataArrayList; }
+
 
 
 }

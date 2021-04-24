@@ -14,8 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Olioprojekti"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SwaggerApiActivity"></activity>
-        <activity android:name=".THLActivity"></activity>
+        <activity android:name=".InputLogActivity"></activity>
+        <activity android:name=".SwaggerApiActivity" />
+        <activity android:name=".THLActivity" />
         <activity android:name=".WaterCalculatorActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".WeightlossActivity" />

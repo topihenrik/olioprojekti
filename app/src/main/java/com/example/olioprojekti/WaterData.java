@@ -27,6 +27,4 @@ public class WaterData {
         return waterConsumed;
     }
 
-
-
 }
