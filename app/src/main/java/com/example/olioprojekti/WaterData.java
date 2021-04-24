@@ -1,7 +1,6 @@
 package com.example.olioprojekti;
 
 import android.util.Log;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -9,7 +8,7 @@ import java.util.Locale;
 
 public class WaterData {
     private String date;
-    private int waterconsumed;
+    private int waterConsumed;
 
     public void WaterData(int waterconsumed) {
         Date currentTime = Calendar.getInstance().getTime();
@@ -17,7 +16,17 @@ public class WaterData {
         String formattedDate = df.format(currentTime);
         this.date = formattedDate;
         Log.d("Päivämäärä data", this.date);
-        this.waterconsumed = waterconsumed;
+        this.waterConsumed = waterconsumed;
     }
+
+    public String getDate() {
+        return date;
+    }
+
+    public int getWaterConsumed() {
+        return waterConsumed;
+    }
+
+
 
 }

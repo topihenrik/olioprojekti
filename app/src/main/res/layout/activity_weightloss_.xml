@@ -4,12 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Weightloss_Activity">
+    tools:context=".WeightlossActivity">
 
     <EditText
         android:id="@+id/edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_width="248dp"
+        android:layout_height="64dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="82dp"
+        android:hint="Your current weight (kg)" />
 
     <Button
         android:id="@+id/button_save"
@@ -19,7 +25,16 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="72dp"
         android:layout_marginBottom="-48dp"
-        android:onClick="save"
+        android:onClick="saveWeightData"
         android:text="save" />
+
+    <TextView
+        android:id="@+id/BMI_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="102dp"
+        android:fontFamily="monospace" />
 
 </RelativeLayout>
