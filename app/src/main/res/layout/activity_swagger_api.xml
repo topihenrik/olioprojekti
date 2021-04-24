@@ -17,17 +17,36 @@
         app:layout_constraintStart_toStartOf="@+id/swgTextHeader"
         app:layout_constraintTop_toBottomOf="@+id/swgTextHeader" />
 
+    <TextView
+        android:id="@+id/swgTextDiet"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:text="What kind of diet do you want to use?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/swgTextExplanation" />
+
+    <Spinner
+        android:id="@+id/swgSpinnerDiet"
+        android:layout_width="140dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toEndOf="@+id/swgTextDiet"
+        app:layout_constraintTop_toBottomOf="@+id/swgTextExplanation" />
+
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
         android:fadeScrollbars="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/swgTextExplanation">
+        app:layout_constraintTop_toBottomOf="@+id/swgTextDiet">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -45,9 +64,10 @@
 
             <SeekBar
                 android:id="@+id/swgSeekBarBeef"
-                android:layout_width="80dp"
+                android:layout_width="120dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="60dp"
+                android:max="200"
                 app:layout_constraintEnd_toEndOf="@+id/swgSwitchLowCarbonPref"
                 app:layout_constraintStart_toStartOf="@+id/swgSwitchLowCarbonPref"
                 app:layout_constraintTop_toBottomOf="@+id/swgSwitchLowCarbonPref" />
@@ -56,10 +76,9 @@
                 android:id="@+id/swgTextLowCarbonPref"
                 android:layout_width="200dp"
                 android:layout_height="75dp"
-                android:layout_marginTop="5dp"
                 android:text="Do you prefer i.e. seasonal produce or certified low emission foods?"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/swgTextDiet" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/swgTextFishLevel"
@@ -143,63 +162,70 @@
 
             <SeekBar
                 android:id="@+id/swgSeekBarFish"
-                android:layout_width="80dp"
+                android:layout_width="120dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="60dp"
+                android:max="200"
                 app:layout_constraintEnd_toEndOf="@+id/swgSeekBarBeef"
                 app:layout_constraintStart_toStartOf="@+id/swgSeekBarBeef"
                 app:layout_constraintTop_toBottomOf="@+id/swgSeekBarBeef" />
 
             <SeekBar
                 android:id="@+id/swgSeekBarPorkNPoultry"
-                android:layout_width="80dp"
+                android:layout_width="120dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="60dp"
+                android:max="200"
                 app:layout_constraintEnd_toEndOf="@+id/swgSeekBarFish"
                 app:layout_constraintStart_toStartOf="@+id/swgSeekBarFish"
                 app:layout_constraintTop_toBottomOf="@+id/swgSeekBarFish" />
 
             <SeekBar
                 android:id="@+id/swgSeekBarDairy"
-                android:layout_width="80dp"
+                android:layout_width="120dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="60dp"
+                android:max="200"
                 app:layout_constraintEnd_toEndOf="@+id/swgSeekBarPorkNPoultry"
                 app:layout_constraintStart_toStartOf="@+id/swgSeekBarPorkNPoultry"
                 app:layout_constraintTop_toBottomOf="@+id/swgSeekBarPorkNPoultry" />
 
             <SeekBar
                 android:id="@+id/swgSeekBarCheese"
-                android:layout_width="80dp"
+                android:layout_width="120dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="60dp"
+                android:max="200"
                 app:layout_constraintEnd_toEndOf="@+id/swgSeekBarDairy"
                 app:layout_constraintStart_toStartOf="@+id/swgSeekBarDairy"
                 app:layout_constraintTop_toBottomOf="@+id/swgSeekBarDairy" />
 
             <SeekBar
                 android:id="@+id/swgSeekBarRice"
-                android:layout_width="80dp"
+                android:layout_width="120dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="60dp"
+                android:max="200"
                 app:layout_constraintEnd_toEndOf="@+id/swgSeekBarCheese"
                 app:layout_constraintStart_toStartOf="@+id/swgSeekBarCheese"
                 app:layout_constraintTop_toBottomOf="@+id/swgSeekBarCheese" />
 
             <SeekBar
                 android:id="@+id/swgSeekBarEgg"
-                android:layout_width="80dp"
+                android:layout_width="120dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="60dp"
+                android:max="200"
                 app:layout_constraintEnd_toEndOf="@+id/swgSeekBarRice"
                 app:layout_constraintStart_toStartOf="@+id/swgSeekBarRice"
                 app:layout_constraintTop_toBottomOf="@+id/swgSeekBarRice" />
 
             <SeekBar
                 android:id="@+id/swgSeekBarWinterSalad"
-                android:layout_width="80dp"
+                android:layout_width="120dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="60dp"
+                android:max="200"
                 app:layout_constraintEnd_toEndOf="@+id/swgSeekBarEgg"
                 app:layout_constraintStart_toStartOf="@+id/swgSeekBarEgg"
                 app:layout_constraintTop_toBottomOf="@+id/swgSeekBarEgg" />
@@ -222,19 +248,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="22dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 app:layout_constraintStart_toEndOf="@+id/swgTextLowCarbonPref"
-                app:layout_constraintTop_toBottomOf="@+id/swgSpinnerDiet" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/swgSBTextBeef"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_marginTop="126dp"
+                android:layout_marginTop="105dp"
                 android:text="0%"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/swgSeekBarBeef"
-                app:layout_constraintTop_toBottomOf="@+id/swgSpinnerDiet" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/swgSBTextFish"
@@ -305,24 +331,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/swgSeekBarWinterSalad"
                 app:layout_constraintTop_toBottomOf="@+id/swgSBTextEgg" />
-
-            <TextView
-                android:id="@+id/swgTextDiet"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="16dp"
-                android:text="What kind of diet do you want to use?"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Spinner
-                android:id="@+id/swgSpinnerDiet"
-                android:layout_width="140dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="22dp"
-                android:layout_marginTop="25dp"
-                app:layout_constraintStart_toEndOf="@+id/swgTextDiet"
-                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

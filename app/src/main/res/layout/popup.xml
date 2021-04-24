@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingBottom="20dp">
 
     <TextView
         android:id="@+id/swgPopTextResult"
-        android:layout_width="140dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:text="Your results are:"
+        android:layout_marginTop="40dp"
+        android:text="Your annual carbon footprint is:"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/swgPopTextDairy"
-        android:layout_width="120dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Dairy"
@@ -29,7 +29,7 @@
 
     <TextView
         android:id="@+id/swgPopTextMeat"
-        android:layout_width="120dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Meat"
@@ -39,7 +39,7 @@
 
     <TextView
         android:id="@+id/swgPopTextPlant"
-        android:layout_width="120dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Plant"
@@ -49,7 +49,7 @@
 
     <TextView
         android:id="@+id/swgPopTextRestaurant"
-        android:layout_width="120dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Restaurant"
@@ -59,7 +59,7 @@
 
     <TextView
         android:id="@+id/swgPopTextTotal"
-        android:layout_width="120dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Total"
@@ -71,9 +71,9 @@
         android:id="@+id/swgPopButtonExit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:text="Exit"
-        app:layout_constraintEnd_toEndOf="@+id/swgPopTextTotal"
-        app:layout_constraintStart_toStartOf="@+id/swgPopTextTotal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/swgPopTextTotal" />
 </androidx.constraintlayout.widget.ConstraintLayout>

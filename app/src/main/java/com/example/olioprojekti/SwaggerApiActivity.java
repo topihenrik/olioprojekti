@@ -16,6 +16,7 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -248,6 +249,7 @@ public class SwaggerApiActivity extends AppCompatActivity implements AdapterView
 
         Log.d("ApiRequest: ", apiRequest);
         String resultJson = sa.readJsonPage(apiRequest);
+        Toast.makeText(SwaggerApiActivity.this, "Carbon footprint calculated!", Toast.LENGTH_LONG).show();
         createNewResultDialog(resultJson);
         return;
     }
@@ -269,11 +271,11 @@ public class SwaggerApiActivity extends AppCompatActivity implements AdapterView
 
         try {
             JSONObject jsonObject = new JSONObject(resultJson);
-            swgPopTextDairy.setText("Dairy: " + Math.round(Double.parseDouble(jsonObject.getString("Dairy"))*100.0)/100.0);
-            swgPopTextMeat.setText("Meat: " + Math.round(Double.parseDouble(jsonObject.getString("Meat"))*100.0)/100.0);
-            swgPopTextPlant.setText("Plant: " + Math.round(Double.parseDouble(jsonObject.getString("Plant"))*100.0)/100.0);
-            swgPopTextRestaurant.setText("Restaurant: " + Math.round(Double.parseDouble(jsonObject.getString("Restaurant"))*100.0)/100.0);
-            swgPopTextTotal.setText("Total: " + Math.round(Double.parseDouble(jsonObject.getString("Total"))*100.0)/100.0);
+            swgPopTextDairy.setText("From dairy: " + Math.round(Double.parseDouble(jsonObject.getString("Dairy"))*100.0)/100.0 + " kg");
+            swgPopTextMeat.setText("From meat: " + Math.round(Double.parseDouble(jsonObject.getString("Meat"))*100.0)/100.0 + " kg");
+            swgPopTextPlant.setText("From plants: " + Math.round(Double.parseDouble(jsonObject.getString("Plant"))*100.0)/100.0 + " kg");
+            swgPopTextRestaurant.setText("From restaurant: " + Math.round(Double.parseDouble(jsonObject.getString("Restaurant"))*100.0)/100.0 + " kg");
+            swgPopTextTotal.setText("In total: " + Math.round(Double.parseDouble(jsonObject.getString("Total"))*100.0)/100.0 + " kg of CO2 / year.");
         } catch (JSONException e) {
             e.printStackTrace();
         }
