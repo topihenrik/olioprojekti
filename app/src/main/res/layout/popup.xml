@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/swgPopTextResult"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:text="Your results are:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/swgPopTextDairy"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Dairy"
+        app:layout_constraintEnd_toEndOf="@+id/swgPopTextResult"
+        app:layout_constraintStart_toStartOf="@+id/swgPopTextResult"
+        app:layout_constraintTop_toBottomOf="@+id/swgPopTextResult" />
+
+    <TextView
+        android:id="@+id/swgPopTextMeat"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Meat"
+        app:layout_constraintEnd_toEndOf="@+id/swgPopTextDairy"
+        app:layout_constraintStart_toStartOf="@+id/swgPopTextDairy"
+        app:layout_constraintTop_toBottomOf="@+id/swgPopTextDairy" />
+
+    <TextView
+        android:id="@+id/swgPopTextPlant"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Plant"
+        app:layout_constraintEnd_toEndOf="@+id/swgPopTextMeat"
+        app:layout_constraintStart_toStartOf="@+id/swgPopTextMeat"
+        app:layout_constraintTop_toBottomOf="@+id/swgPopTextMeat" />
+
+    <TextView
+        android:id="@+id/swgPopTextRestaurant"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Restaurant"
+        app:layout_constraintEnd_toEndOf="@+id/swgPopTextPlant"
+        app:layout_constraintStart_toStartOf="@+id/swgPopTextPlant"
+        app:layout_constraintTop_toBottomOf="@+id/swgPopTextPlant" />
+
+    <TextView
+        android:id="@+id/swgPopTextTotal"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Total"
+        app:layout_constraintEnd_toEndOf="@+id/swgPopTextRestaurant"
+        app:layout_constraintStart_toStartOf="@+id/swgPopTextRestaurant"
+        app:layout_constraintTop_toBottomOf="@+id/swgPopTextRestaurant" />
+
+    <Button
+        android:id="@+id/swgPopButtonExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Exit"
+        app:layout_constraintEnd_toEndOf="@+id/swgPopTextTotal"
+        app:layout_constraintStart_toStartOf="@+id/swgPopTextTotal"
+        app:layout_constraintTop_toBottomOf="@+id/swgPopTextTotal" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -258,8 +258,8 @@
 
             <TextView
                 android:id="@+id/swgSBTextDairy"
-                android:layout_width="18dp"
-                android:layout_height="17dp"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
                 android:layout_marginTop="60dp"
                 android:text="0%"
                 app:layout_constraintEnd_toEndOf="parent"

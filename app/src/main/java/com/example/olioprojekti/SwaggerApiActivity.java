@@ -1,5 +1,6 @@
 package com.example.olioprojekti;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.SeekBar;
@@ -15,13 +17,22 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class SwaggerApiActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+    TextView swgPopTextDairy, swgPopTextMeat, swgPopTextPlant, swgPopTextRestaurant, swgPopTextTotal;
+    Button swgPopButtonExit;
     TextView swgSBTextBeef, swgSBTextFish, swgSBTextPorkNPoultry, swgSBTextDairy, swgSBTextCheese, swgSBTextRice, swgSBTextEgg, swgSBTextWinterSalad;
     SeekBar swgSeekBarBeef, swgSeekBarFish, swgSeekBarPorkNPoultry, swgSeekBarDairy, swgSeekBarCheese, swgSeekBarRice, swgSeekBarEgg, swgSeekBarWinterSalad;
     EditText swgEditSpending;
     Spinner swgSpinnerDiet;
     Switch swgSwitchLowCarbonPref;
     String swgSwitchLowCaronPrefValue = "false";
+
+    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog dialog;
 
 
     SwaggerApi sa = new SwaggerApi();
@@ -208,7 +219,6 @@ public class SwaggerApiActivity extends AppCompatActivity implements AdapterView
             }
         });
 
-
     }
 
     @Override
@@ -237,8 +247,51 @@ public class SwaggerApiActivity extends AppCompatActivity implements AdapterView
                 swgEditSpending.getText().toString().replaceAll("[^0-9]",""));
 
         Log.d("ApiRequest: ", apiRequest);
-        sa.readJsonPage(apiRequest);
+        String resultJson = sa.readJsonPage(apiRequest);
+        createNewResultDialog(resultJson);
         return;
+    }
+
+    public void createNewResultDialog(String resultJson) {
+        dialogBuilder = new AlertDialog.Builder(this);
+        final View resultPopupView = getLayoutInflater().inflate(R.layout.popup, null);
+
+        swgPopTextDairy = resultPopupView.findViewById(R.id.swgPopTextDairy);
+        swgPopTextMeat = resultPopupView.findViewById(R.id.swgPopTextMeat);
+        swgPopTextPlant = resultPopupView.findViewById(R.id.swgPopTextPlant);
+        swgPopTextRestaurant = resultPopupView.findViewById(R.id.swgPopTextRestaurant);
+        swgPopTextTotal = resultPopupView.findViewById(R.id.swgPopTextTotal);
+        swgPopButtonExit = resultPopupView.findViewById(R.id.swgPopButtonExit);
+
+
+        //
+
+
+        try {
+            JSONObject jsonObject = new JSONObject(resultJson);
+            swgPopTextDairy.setText("Dairy: " + Math.round(Double.parseDouble(jsonObject.getString("Dairy"))*100.0)/100.0);
+            swgPopTextMeat.setText("Meat: " + Math.round(Double.parseDouble(jsonObject.getString("Meat"))*100.0)/100.0);
+            swgPopTextPlant.setText("Plant: " + Math.round(Double.parseDouble(jsonObject.getString("Plant"))*100.0)/100.0);
+            swgPopTextRestaurant.setText("Restaurant: " + Math.round(Double.parseDouble(jsonObject.getString("Restaurant"))*100.0)/100.0);
+            swgPopTextTotal.setText("Total: " + Math.round(Double.parseDouble(jsonObject.getString("Total"))*100.0)/100.0);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        //
+
+
+        dialogBuilder.setView(resultPopupView);
+        dialog = dialogBuilder.create();
+        dialog.show();
+
+        swgPopButtonExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
     }
 
 

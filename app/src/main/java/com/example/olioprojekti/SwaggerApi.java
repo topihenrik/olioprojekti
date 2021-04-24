@@ -77,8 +77,6 @@ public class SwaggerApi {
         return stringBuild.toString();
     }
 
-
-
     public String readJsonPage(String apiRequestUrl){
         URL url = null;
         String result = null;
@@ -99,5 +97,7 @@ public class SwaggerApi {
         }
     return result;
     }
+
+
 
 }
