@@ -29,7 +29,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:fontFamily="monospace"
-        android:hint="Municipality (suom. Kunta)"
+        android:hint="Municipality (fi. Kunta)"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.627"

@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
-                android:text="Region: X"
+                android:text="Municipality: X"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stEditEmail" />
 
@@ -161,7 +161,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:ems="10"
-                android:hint="New region"
+                android:hint="New municipality (fi. Kunta)"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stTextRegion" />

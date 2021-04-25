@@ -20,7 +20,7 @@ public class THLActivity extends AppCompatActivity {
         thlSmokerText = (TextView) findViewById(R.id.thlSmokerText);
         thlAlcoholText = (TextView) findViewById(R.id.thlAlcoholText);
         textUserRegion = findViewById(R.id.textUserRegion);
-        textUserRegion.setText("Your region is " + DataHandler.getInstance().getAccount().getRegion());
+        textUserRegion.setText("Your municipality is " + DataHandler.getInstance().getAccount().getRegion());
 
         try {
             if (thlDataSmokerObject != null) {

@@ -37,7 +37,7 @@ public class SettingsActivity extends AppCompatActivity {
         stTextEmail.setText("Email: " + DataHandler.getInstance().getAccount().getEmail());
 
         stTextRegion = findViewById(R.id.stTextRegion);
-        stTextRegion.setText("Region: " + DataHandler.getInstance().getAccount().getRegion());
+        stTextRegion.setText("Municipality: " + DataHandler.getInstance().getAccount().getRegion());
 
         stTextWeight = findViewById(R.id.stTextWeight);
         stTextWeight.setText("Weight: " + DataHandler.getInstance().getAccount().getWeight());
@@ -113,7 +113,7 @@ public class SettingsActivity extends AppCompatActivity {
             DataHandler.getInstance().getAccount().setRegion(stEditRegion.getText().toString());
             DataHandler.getInstance().getAccount().setRegionID(regionID);
             DataHandler.getInstance().updateAccount(this);
-            stTextRegion.setText("Region: " + DataHandler.getInstance().getAccount().getRegion());
+            stTextRegion.setText("Municipality: " + DataHandler.getInstance().getAccount().getRegion());
         }
     }
 
