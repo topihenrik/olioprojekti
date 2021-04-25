@@ -15,10 +15,10 @@ public class Account {
     public void setLastName(String lastName) { this.lastName = lastName; }
     public String getLastName() { return lastName; }
 
-    private String userName;
-    public void setUserName(String userName) { this.userName = userName; }
-    public String getUserName() {
-        return userName;
+    private String username;
+    public void setUsername(String username) { this.username = username; }
+    public String getUsername() {
+        return username;
     }
 
     private String email;
@@ -66,10 +66,10 @@ public class Account {
     public void setWeightDataArrayList(ArrayList<WeightData> weightDataArrayList) { this.weightDataArrayList = weightDataArrayList; }
     public ArrayList<WeightData> getWeightDataArrayList() { return weightDataArrayList; }
 
-    public Account(String firstName, String lastName, String userName, String email, String password, String region, String regionID, String weight, String height, byte[] salt) {
+    public Account(String firstName, String lastName, String username, String email, String password, String region, String regionID, String weight, String height, byte[] salt) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userName = userName;
+        this.username = username;
         this.email = email;
         this.password = password;
         this.region = region;

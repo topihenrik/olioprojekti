@@ -24,14 +24,14 @@ public class AccountManager {
             arrayList = gson.fromJson(json, userListType);
         }
         for (Account x : arrayList) {
-            if (name.equals(x.getUserName())) {
-                if (name.equals(x.getUserName()) && x.getPassword().equals(PasswordHash.generatePassword(password, x.getSalt()) )){
+            if (name.equals(x.getUsername())) {
+                if (name.equals(x.getUsername()) && x.getPassword().equals(PasswordHash.generatePassword(password, x.getSalt()) )){
                     Log.d("LogStatus:","LOGGED IN");
                     return(x);
                 } else {
                     Log.d("LogStatus:","WRONG USERNAME OR PASSWORD");
                 }
-            } else if (!name.equals(x.getUserName())){
+            } else if (!name.equals(x.getUsername())){
                 Log.d("LogStatus:","username not found");
             }
         }

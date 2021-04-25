@@ -17,8 +17,6 @@ import java.util.ArrayList;
 
 // TextFormChecker can be used to confirm that user inputs the information in right format.
 public class TextFormChecker {
-
-    static Gson gson = new Gson();
     static ArrayList<Account> arrayList = new ArrayList<>();
 
     private  static TextFormChecker single = new TextFormChecker();
@@ -46,38 +44,48 @@ public class TextFormChecker {
     }
 
     public static boolean checkWeightFormat(String weight) {
-        if ((weight.matches("^[0-9]*$")) || (weight.equals(""))) {
+        if ((weight.matches("^[0-9]*$")) && !(weight.equals(""))) {
             return true;
         }
         return false;
     }
 
     public static boolean checkHeightFormat(String height) {
-        if ((height.matches("^[0-9]*$")) || (height.equals(""))) {
+        if ((height.matches("^[0-9]*$")) && !(height.equals(""))) {
             return true;
         }
         return false;
     }
 
+    // CHECKS IF USERNAME HAS ALREADY BEEN TAKEN OR IF THE USERNAME IS AN EMPTY STRING.
     public static boolean checkUsernameFormat(String username, String jsonAccounts) {
+        boolean taken = false;
+        if (username.equals("")) {
+            return false;
+        }
+        Gson gson = new Gson();
+        Log.d("WANTED USERNAME: ", username);
+        Log.d("Json content: ", jsonAccounts);
         if (!(jsonAccounts == "")) {
             Type userListType = new TypeToken<ArrayList<Account>>(){}.getType();
             arrayList = gson.fromJson(jsonAccounts, userListType);
         }
 
         for (Account x : arrayList) {
-            if (username.equals(x.getUserName())) {
+            if (username.equals(x.getUsername())) {
                 Log.d("TakenStatus:", "USERNAME IS TAKEN!");
-                return true;
+                return false;
             }
+            Log.d("USED USERNAME: ", x.getUsername());
             Log.d("TakenStatus:", "USERNAME IS NOT TAKEN!");
 
         }
-        return false;
+        return true;
     }
 
     public static String getRegionID(String region, Context context) {
         String regionJson = null;
+        // LOAD LIST OF REAGIONS from regionlist.json.
         try {
             InputStream is = context.getAssets().open("regionlist.json");
             int size = is.available();

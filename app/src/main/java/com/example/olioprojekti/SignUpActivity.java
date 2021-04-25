@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,16 +14,11 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -37,7 +31,7 @@ public class SignUpActivity extends AppCompatActivity {
     TextView textFailWeight, textFailHeight, textFailPassword, textFailFirstName, textFailLastName, textFailUserName, textFailRegion;
     private static final String FILE_NAME = "data.json";
     ArrayList<Account> arrayList = new ArrayList<>();
-    String json, regionJson;
+    String jsonAccounts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +56,7 @@ public class SignUpActivity extends AppCompatActivity {
         Button button = (Button) findViewById(R.id.buttonWeightLoss);
         context = SignUpActivity.this;
 
-        // LOAD ACCOUNT JSON ARRAYLIST INTO "json" AS STRING FROM "data.json" FILE.
+        // LOAD ACCOUNT JSON ARRAYLIST INTO "jsonAccounts" AS STRING FROM "data.json" FILE.
         FileInputStream fis = null;
         try {
             fis = openFileInput(FILE_NAME);
@@ -73,7 +67,7 @@ public class SignUpActivity extends AppCompatActivity {
             while ((text = br.readLine()) != null) {
                 sb.append(text);
             }
-            json = sb.toString();
+            jsonAccounts = sb.toString();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -88,21 +82,6 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         }
-        /*
-        // LOAD LIST OF REAGIONS from regionlist.json.
-        try {
-            InputStream is = this.getAssets().open("regionlist.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            regionJson = new String(buffer, "UTF-8");
-            //Log.d("regionJson", regionJson);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        //
-        */
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,44 +96,6 @@ public class SignUpActivity extends AppCompatActivity {
         Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
         startActivity(intent);
     }
-
-    /*
-    // CHECKS IF USERNAME HAS ALREADY BEEN TAKEN.
-    public boolean isUserNameTaken(String username, String jsonAccounts) {
-        if (!(jsonAccounts == "")) {
-            Type userListType = new TypeToken<ArrayList<Account>>(){}.getType();
-            arrayList = gson.fromJson(jsonAccounts, userListType);
-        }
-
-        for (Account x : arrayList) {
-            if (username.equals(x.getUserName())) {
-                Log.d("TakenStatus:", "USERNAME IS TAKEN!");
-                return true;
-            }
-            Log.d("TakenStatus:", "USERNAME IS NOT TAKEN!");
-
-        }
-        return false;
-
-    }
-
-    public String isRegionAcceptable(String region) {
-        JSONArray jsonArray  = null;
-        JSONObject jsonObject = null;
-        try {
-            jsonArray = new JSONArray(regionJson);
-            for (int i = 0; i < jsonArray.length(); i++) {
-                jsonObject = jsonArray.getJSONObject(i);
-                if(region.equals(jsonObject.getString("classificationItemName"))) {
-                    return jsonObject.getString("code").replaceAll("\u0027", "");
-                }
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    */
 
     // USER HAS FILLED SOME INFORMATION AND PRESSES THE "SIGN UP" BUTTON.
     public void registerClick (View view) {
@@ -196,8 +137,12 @@ public class SignUpActivity extends AppCompatActivity {
             textFailHeight.setText("");
         }
 
-        if (TextFormChecker.checkUsernameFormat(editUsername.getText().toString(), json)) {
-            textFailUserName.setText("Username is already taken!");
+        if (!(TextFormChecker.checkUsernameFormat(editUsername.getText().toString(), jsonAccounts))) {
+            if (editUsername.getText().toString().equals("")) {
+                textFailUserName.setText("Invalid username!");
+            } else {
+                textFailUserName.setText("Username is already taken!");
+            }
             failCheck = true;
         } else {
             textFailUserName.setText("");
@@ -211,16 +156,14 @@ public class SignUpActivity extends AppCompatActivity {
             textFailRegion.setText("");
         }
 
-
-
         if (failCheck) {
             return;
         }
 
         try {
-            if (!(json == "")) {
+            if (!(jsonAccounts == "")) {
                 Type userListType = new TypeToken<ArrayList<Account>>(){}.getType();
-                arrayList = gson.fromJson(json, userListType);
+                arrayList = gson.fromJson(jsonAccounts, userListType);
             }
 
             Account account = am.register(editFirstName.getText().toString(), editLastName.getText().toString(), editUsername.getText().toString(), editEmail.getText().toString(), editPassword.getText().toString(), editRegion.getText().toString(), regionID, editWeight.getText().toString(), editHeight.getText().toString());
