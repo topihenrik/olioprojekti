@@ -158,65 +158,62 @@ public class SignUpActivity extends AppCompatActivity {
 
     // USER HAS FILLED SOME INFORMATION AND PRESSES THE "SIGN UP" BUTTON.
     public void registerClick (View view) {
-        boolean failcheck = false;
+        boolean failCheck = false;
 
-
-
-        /*
         //Check if information is in right format.
-        if(!(editFirstName.getText().toString().matches("[a-zA-Z]+"))) {
+        if(!(TextFormChecker.checkFirstNameFormat(editFirstName.getText().toString()))) {
             textFailFirstName.setText("Use alphabets!");
-            failcheck = true;
+            failCheck = true;
         } else {
             textFailFirstName.setText("");
         }
 
-        if(!(editLastName.getText().toString().matches("[a-zA-Z]+"))) {
+        if(!(TextFormChecker.checkLastNameFormat(editLastName.getText().toString()))) {
             textFailLastName.setText("Use alphabets!");
-            failcheck = true;
+            failCheck = true;
         } else {
             textFailLastName.setText("");
         }
 
-        if (!(editPassword.getText().toString().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).{8,}$"))) {
+        if (!(TextFormChecker.checkPasswordFormat(editPassword.getText().toString()))) {
             textFailPassword.setText("Password not strong enough!");
-            failcheck = true;
+            failCheck = true;
         } else {
             textFailPassword.setText("");
         }
 
-        if (!(editWeight.getText().toString().matches("^[0-9]*$")) || (editWeight.getText().toString().equals(""))) {
+        if (!(TextFormChecker.checkWeightFormat(editWeight.getText().toString()))) {
             textFailWeight.setText("Use numbers!");
-            failcheck = true;
+            failCheck = true;
         } else {
             textFailWeight.setText("");
         }
 
-        if (!(editHeight.getText().toString().matches("^[0-9]*$")) || (editHeight.getText().toString().equals(""))) {
+        if (!(TextFormChecker.checkHeightFormat(editHeight.getText().toString()))) {
             textFailHeight.setText("Use numbers!");
-            failcheck = true;
+            failCheck = true;
         } else {
             textFailHeight.setText("");
         }
 
-        if (isUserNameTaken(editUsername.getText().toString(), json)) {
+        if (TextFormChecker.checkUsernameFormat(editUsername.getText().toString(), json)) {
             textFailUserName.setText("Username is already taken!");
-            failcheck = true;
+            failCheck = true;
         } else {
             textFailUserName.setText("");
         }
 
         String regionID;
-        if ((regionID = isRegionAcceptable(editRegion.getText().toString())) == null) {
+        if ((regionID = TextFormChecker.getRegionID(editRegion.getText().toString(), this)) == null) {
             textFailRegion.setText("Region is not correct.");
-            failcheck = true;
+            failCheck = true;
         } else {
             textFailRegion.setText("");
         }
 
-        */
 
-        if (failcheck) {
+
+        if (failCheck) {
             return;
         }
 
