@@ -37,7 +37,7 @@ public class WeightlossActivity extends AppCompatActivity {
             if(result<0){
                 mTextView.setText("Could not calculate BMI - check your input value!");
             }
-            if(result==0){
+            else if(result==0){
                 mTextView.setText("Could not calculate BMI - check your input value!");
             }
             else if(height==0){
