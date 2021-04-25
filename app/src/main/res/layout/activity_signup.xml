@@ -113,7 +113,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:fontFamily="monospace"
-        android:hint="Password (Needs to be strong)"
+        android:hint="Strong password (eg. olio123D@)"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.627"

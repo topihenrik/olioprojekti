@@ -82,14 +82,6 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         }
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goBackToLoginIntent = new Intent(SignUpActivity.this, LoginActivity.class);
-                startActivity(goBackToLoginIntent);
-            }
-        });
     }
 
     public void loadLoginActivity() {
