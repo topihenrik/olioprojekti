@@ -18,7 +18,6 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -250,6 +249,9 @@ public class SwaggerApiActivity extends AppCompatActivity implements AdapterView
         Log.d("ApiRequest: ", apiRequest);
         String resultJson = sa.readJsonPage(apiRequest);
         Toast.makeText(SwaggerApiActivity.this, "Carbon footprint calculated!", Toast.LENGTH_LONG).show();
+
+        DataHandler.getInstance().saveDietData(resultJson);
+        DataHandler.getInstance().updateAccount(this);
         createNewResultDialog(resultJson);
         return;
     }
