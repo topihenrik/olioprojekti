@@ -63,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void loadSettingsActivity(View v) {
+        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
     public void loginStatusChecker() {
         if (DataHandler.getInstance().getAccount() == null) {
             Toast.makeText(MainActivity.this, "Login to continue!", Toast.LENGTH_LONG).show();

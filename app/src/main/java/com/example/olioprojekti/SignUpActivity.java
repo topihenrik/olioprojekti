@@ -88,7 +88,7 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         }
-
+        /*
         // LOAD LIST OF REAGIONS from regionlist.json.
         try {
             InputStream is = this.getAssets().open("regionlist.json");
@@ -101,9 +101,8 @@ public class SignUpActivity extends AppCompatActivity {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
         //
-
+        */
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +118,7 @@ public class SignUpActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /*
     // CHECKS IF USERNAME HAS ALREADY BEEN TAKEN.
     public boolean isUserNameTaken(String username, String jsonAccounts) {
         if (!(jsonAccounts == "")) {
@@ -154,11 +154,15 @@ public class SignUpActivity extends AppCompatActivity {
         }
         return null;
     }
+    */
 
     // USER HAS FILLED SOME INFORMATION AND PRESSES THE "SIGN UP" BUTTON.
     public void registerClick (View view) {
         boolean failcheck = false;
 
+
+
+        /*
         //Check if information is in right format.
         if(!(editFirstName.getText().toString().matches("[a-zA-Z]+"))) {
             textFailFirstName.setText("Use alphabets!");
@@ -209,6 +213,8 @@ public class SignUpActivity extends AppCompatActivity {
         } else {
             textFailRegion.setText("");
         }
+
+        */
 
         if (failcheck) {
             return;

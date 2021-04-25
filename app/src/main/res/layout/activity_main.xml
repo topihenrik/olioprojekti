@@ -10,7 +10,7 @@
         android:id="@+id/buttonWeightLoss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:onClick="loadWeightLossActivity"
         android:text="Weightloss"
         app:layout_constraintEnd_toEndOf="@+id/buttonWaterCalc"
@@ -21,7 +21,7 @@
         android:id="@+id/buttonWaterCalc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:onClick="loadWaterCalcActivity"
         android:text="WaterCalc"
         app:layout_constraintEnd_toEndOf="@+id/motivationalQuote"
@@ -81,7 +81,7 @@
         android:id="@+id/thlData"
         android:layout_width="117dp"
         android:layout_height="46dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:onClick="loadTHLActivity"
         android:text="THL DATA"
         app:layout_constraintEnd_toEndOf="@+id/buttonWeightLoss"
@@ -92,15 +92,15 @@
         android:id="@+id/buttonSwagger"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:onClick="loadSwaggerApiActivity"
-        android:text="Swagger"
+        android:text="Climate Diet"
         app:layout_constraintEnd_toEndOf="@+id/thlData"
         app:layout_constraintStart_toStartOf="@+id/thlData"
         app:layout_constraintTop_toBottomOf="@+id/thlData" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonInputLog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -109,5 +109,16 @@
         android:text="Input log"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:onClick="loadSettingsActivity"
+        android:text="Settings"
+        app:layout_constraintEnd_toEndOf="@+id/buttonSwagger"
+        app:layout_constraintStart_toStartOf="@+id/buttonSwagger"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSwagger" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
