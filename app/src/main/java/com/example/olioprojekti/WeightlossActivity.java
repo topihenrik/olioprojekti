@@ -26,28 +26,35 @@ public class WeightlossActivity extends AppCompatActivity {
     }
 
 
-    public double calculateBMI(String text){
+    public double calculateBMI(String text){ //Calculates approximate BMI from given input in kilograms and by using the users weight
         double constant = 1.3;
         double height = (Double.parseDouble(DataHandler.getInstance().getAccount().getHeight()))/100;
-        double weight = Double.parseDouble(text);
-        weight = (constant*weight);
-        height = Math.pow(height,2.5);
-        double result = Math.round((weight/height)*10)/10.0;
-        if(result<0){
-            mTextView.setText("Could not calculate BMI - check your input value!");
+        try {
+            double weight = Double.parseDouble(text);
+            weight = (constant*weight);
+            height = Math.pow(height,2.5);
+            double result = Math.round((weight/height)*10)/10.0;
+            if(result<0){
+                mTextView.setText("Could not calculate BMI - check your input value!");
+            }
+            if(result==0){
+                mTextView.setText("Could not calculate BMI - check your input value!");
+            }
+            else if(height==0){
+                mTextView.setText("Could not calculate BMI - check your height!");
+            }
+            else{
+                mTextView.setText("Your current BMI (rounded) is "+result+".");
+            }
+            return result;
+        } catch (NumberFormatException nfe){
+            mTextView.setText("Characters not allowed, only numbers!");
         }
-        else if(height==0){
-            mTextView.setText("Could not calculate BMI - check your height!");
-        }
-        else{
-            mTextView.setText("Your current BMI (rounded) is "+result+".");
-        }
-
-        return result;
+        return 0;
     }
 
 
-    public void saveWeightData(View v) {
+    public void saveWeightData(View v) { // Saves the inputted data to an object and appends that object to an array that is saved to a file
         String text = mEditText.getText().toString();
         Date currentTime = Calendar.getInstance().getTime();
         String dateToday = currentTime.toString();
