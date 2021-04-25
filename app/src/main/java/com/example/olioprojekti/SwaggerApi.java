@@ -25,42 +25,7 @@ public class SwaggerApi {
     Gson gson = new Gson();
     static ArrayList<String> arrayList = new ArrayList<>();
 
-    public void readXML2() {
-        Log.d("Testi", "STRING445");
-        try {
-            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            String urlString = "https://ilmastodieetti.ymparisto.fi/ilmastodieetti/calculatorapi/v1/FoodCalculator?query.diet=omnivore";
-            Document doc = builder.parse(urlString);
-            doc.getDocumentElement().normalize();
-            Log.d("String", "Kaikki ok!");
-            Type userListType = new TypeToken<ArrayList<String>>(){}.getType();
-            //arrayList = gson.fromJson(doc, userListType);
-
-
-
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        }
-        return;
-    }
-
-
-    // https://ilmastodieetti.ymparisto.fi/ilmastodieetti/calculatorapi/v1/FoodCalculator
-    // ?query.diet=omnivore
-    // &query.lowCarbonPreference=true
-    // &query.beefLevel=10
-    // &query.fishLevel=20
-    // &query.porkPoultryLevel=30
-    // &query.dairyLevel=40
-    // &query.cheeseLevel=50
-    // &query.riceLevel=60
-    // &query.eggLevel=70
-    // &query.winterSaladLevel=80
-    // &query.restaurantSpending=90
+    // Generates API request URL.
     public String generateApiRequest(String diet, String lowCarbonPreference, String beefLevel, String fishLevel, String porkPoultryLevel, String dairyLevel, String cheeseLevel, String riceLevel, String eggLevel, String winterSaladLevel, String restaurantSpending) {
         StringBuilder stringBuild = new StringBuilder("https://ilmastodieetti.ymparisto.fi/ilmastodieetti/calculatorapi/v1/FoodCalculator");
         stringBuild.append("?query.diet=" + diet);
@@ -77,6 +42,7 @@ public class SwaggerApi {
         return stringBuild.toString();
     }
 
+    // Makes api request based on String "apiRequestUrl" and brings the site content back as String "result".
     public String readJsonPage(String apiRequestUrl){
         URL url = null;
         String result = null;

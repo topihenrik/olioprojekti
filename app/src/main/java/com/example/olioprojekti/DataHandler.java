@@ -40,6 +40,7 @@ public class DataHandler {
         }
     }
 
+    // Updates
     Gson gson = new Gson();
     public void updateAccount(Context context) {
         FileInputStream fis = null;

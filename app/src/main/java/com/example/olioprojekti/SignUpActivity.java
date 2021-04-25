@@ -97,11 +97,12 @@ public class SignUpActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // USER HAS FILLED SOME INFORMATION AND PRESSES THE "SIGN UP" BUTTON.
+
+    // User has filled some information and presses the "SIGN UP" button.
     public void registerClick (View view) {
         boolean failCheck = false;
 
-        //Check if information is in right format.
+        //Checks if user given information is in right format.
         if(!(TextFormChecker.checkFirstNameFormat(editFirstName.getText().toString()))) {
             textFailFirstName.setText("Use alphabets!");
             failCheck = true;
@@ -159,7 +160,7 @@ public class SignUpActivity extends AppCompatActivity {
         if (failCheck) {
             return;
         }
-
+        //Adds users account to "data.json" where it can be accessed as needed.
         try {
             if (!(jsonAccounts == "")) {
                 Type userListType = new TypeToken<ArrayList<Account>>(){}.getType();

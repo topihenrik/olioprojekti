@@ -232,8 +232,8 @@ public class SwaggerApiActivity extends AppCompatActivity implements AdapterView
 
     }
 
+    // Generates Climate Diet results from user given information.
     public void swgSubmitButton(View view) {
-        //public String generateApiRequest(String diet, String lowCarbonPreference, String beefLevel, String fishLevel, String porkPoultryLevel, String dairyLevel, String cheeseLevel, String riceLevel, String eggLevel, String winterSaladLevel, String restaurantSpending)
         String apiRequest = sa.generateApiRequest(
                 swgSpinnerDiet.getSelectedItem().toString(),
                 swgSwitchLowCaronPrefValue,
@@ -254,6 +254,7 @@ public class SwaggerApiActivity extends AppCompatActivity implements AdapterView
         return;
     }
 
+    // Creates a pop up window for Climate Diet results.
     public void createNewResultDialog(String resultJson) {
         dialogBuilder = new AlertDialog.Builder(this);
         final View resultPopupView = getLayoutInflater().inflate(R.layout.popup, null);
@@ -265,10 +266,6 @@ public class SwaggerApiActivity extends AppCompatActivity implements AdapterView
         swgPopTextTotal = resultPopupView.findViewById(R.id.swgPopTextTotal);
         swgPopButtonExit = resultPopupView.findViewById(R.id.swgPopButtonExit);
 
-
-        //
-
-
         try {
             JSONObject jsonObject = new JSONObject(resultJson);
             swgPopTextDairy.setText("From dairy: " + Math.round(Double.parseDouble(jsonObject.getString("Dairy"))*100.0)/100.0 + " kg");
@@ -279,10 +276,6 @@ public class SwaggerApiActivity extends AppCompatActivity implements AdapterView
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-        //
-
 
         dialogBuilder.setView(resultPopupView);
         dialog = dialogBuilder.create();
