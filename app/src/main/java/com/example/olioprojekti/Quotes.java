@@ -22,7 +22,8 @@ public class Quotes {
     }
 
 
-    public String getRandomQuote(){ //Makes a json array from the string from getJSON(), and then selects a random quote from that list and returns a String with the quote and author.
+    // Makes a json array from the string from getJSON(), and then selects a random quote from that list and returns a String with the quote and author.
+    public String getRandomQuote(){
         String json = getJSON();
         Random random = new Random();
         String quote = null;
@@ -46,7 +47,8 @@ public class Quotes {
     return quote;
     }
 
-    public String getJSON() { //Reads the motivational quotes api to a string.
+    // Reads the motivational quotes api to a string.
+    public String getJSON() {
         String response = null;
         try {
             URL url = new URL("https://type.fit/api/quotes");

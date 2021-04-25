@@ -54,6 +54,7 @@ public class WaterCalculatorActivity extends AppCompatActivity implements Adapte
 
     }
 
+    // Adds submitted waterData into personal Account object.
     public void saveWaterData(View v) {
         WaterData waterData = new WaterData();
         Log.d("SpinnerSel", String.valueOf(spinnerSelectionInt));

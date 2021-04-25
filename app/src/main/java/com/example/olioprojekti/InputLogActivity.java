@@ -29,6 +29,7 @@ public class InputLogActivity extends AppCompatActivity {
         logListView.setAdapter(logListViewAdapter);
     }
 
+    // Loads user input from Water/Weight Calculator into ScrollView.
     public ArrayList<String> loadData(ArrayList<String> dataList) {
         String tempData;
         dataList.add("Your WaterCalculator data: ");

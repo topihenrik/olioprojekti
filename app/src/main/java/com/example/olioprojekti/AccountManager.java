@@ -17,7 +17,7 @@ public class AccountManager {
         return am;
     }
 
-    // CHECKS IF USERNAME AND PASSWORD ARE CORRECT.
+    // Checks if username and password are correct.
     public Account login(String name, String password, String json) {
         if (!(json == "")) {
             Type userListType = new TypeToken<ArrayList<Account>>(){}.getType();
@@ -38,7 +38,7 @@ public class AccountManager {
         return(null);
     }
 
-    // CREATES A NEW ACCOUNT OBJECT FOR A NEW USER.
+    // Creates a new Account object for a new user.
     public Account register(String fName, String lName, String userName, String eMail, String passWord, String userRegion, String userRegionID, String Weight, String Height) {
         byte[] salt = PasswordHash.getSalt();
         String generatedPassword = PasswordHash.generatePassword(passWord, salt);
