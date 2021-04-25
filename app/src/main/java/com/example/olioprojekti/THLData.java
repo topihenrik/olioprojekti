@@ -12,7 +12,8 @@ import java.util.Scanner;
 public class THLData {
     String userRegion = DataHandler.getInstance().getAccount().getRegionID();
 
-    public String readJsonSmokerPage(){ //Reads the api-page and reads the whole page in to a string
+    // Reads the api-page and reads the whole page in to a string
+    public String readJsonSmokerPage(){
         URL url = null;
         String result = null;
         try {
@@ -32,7 +33,8 @@ public class THLData {
         return result;
     }
 
-    public JSONObject jsonSmokerArray() { //Calls the readJsonSmokerPage() and makes a json array from it. Then searchers the right region id corresponding to the users region and returns the json object with the right data.
+    // Calls the readJsonSmokerPage() and makes a json array from it. Then searchers the right region id corresponding to the users region and returns the json object with the right data.
+    public JSONObject jsonSmokerArray() {
         JSONArray jsonArray  = null;
         JSONObject jsonObject = null;
         try {
@@ -51,7 +53,8 @@ public class THLData {
         return jsonObject;
     }
 
-    public String readJsonAlcoholPage(){ //Reads the api-page and reads the whole page in to a string
+    // Reads the api-page and reads the whole page in to a string
+    public String readJsonAlcoholPage(){
         URL url = null;
         String result = null;
         try {
@@ -71,7 +74,8 @@ public class THLData {
         return result;
     }
 
-    public JSONObject jsonAlcoholArray() { //Calls the readJsonSmokerPage() and makes a json array from it. Then searchers the right region id corresponding to the users region and returns the json object with the right data.
+    // Calls the readJsonSmokerPage() and makes a json array from it. Then searchers the right region id corresponding to the users region and returns the json object with the right data.
+    public JSONObject jsonAlcoholArray() {
         JSONArray jsonArray  = null;
         JSONObject jsonObject = null;
         try {

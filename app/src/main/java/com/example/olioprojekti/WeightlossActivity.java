@@ -25,8 +25,8 @@ public class WeightlossActivity extends AppCompatActivity {
         mTextView = findViewById(R.id.BMI_textview);
     }
 
-
-    public double calculateBMI(String text){ //Calculates approximate BMI from given input in kilograms and by using the users weight
+    //Calculates approximate BMI from given input in kilograms and by using the users weight
+    public double calculateBMI(String text){
         double constant = 1.3;
         double height = (Double.parseDouble(DataHandler.getInstance().getAccount().getHeight()))/100;
         try {
@@ -53,8 +53,8 @@ public class WeightlossActivity extends AppCompatActivity {
         return 0;
     }
 
-
-    public void saveWeightData(View v) { // Saves the inputted data to an object and appends that object to an array that is saved to a file
+    // Saves the inputted data to an object and appends that object to an array that is saved to a file
+    public void saveWeightData(View v) {
         String text = mEditText.getText().toString();
         Date currentTime = Calendar.getInstance().getTime();
         String dateToday = currentTime.toString();

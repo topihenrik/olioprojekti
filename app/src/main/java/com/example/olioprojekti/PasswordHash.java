@@ -7,7 +7,8 @@ import java.security.SecureRandom;
 
 public class PasswordHash {
 
-    public static String generatePassword(String password, byte[] salt) { //Generates the SHA-512 and salted password and returns it in string form
+    // Generates the SHA-512 and salted password and returns it in string form
+    public static String generatePassword(String password, byte[] salt) {
         String generatedPassword = null;
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-512");
@@ -26,7 +27,8 @@ public class PasswordHash {
         return generatedPassword;
     }
 
-    public static byte[] getSalt() { //Generates a random salt for the password hashing
+    // Generates a random salt for the password hashing
+    public static byte[] getSalt() {
         SecureRandom sRandom = new SecureRandom();
         byte[] salt = new byte[16];
         sRandom.nextBytes(salt);

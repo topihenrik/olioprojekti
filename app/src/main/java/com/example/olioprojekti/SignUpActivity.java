@@ -160,7 +160,9 @@ public class SignUpActivity extends AppCompatActivity {
         if (failCheck) {
             return;
         }
+
         //Adds users account to "data.json" where it can be accessed as needed.
+
         try {
             if (!(jsonAccounts == "")) {
                 Type userListType = new TypeToken<ArrayList<Account>>(){}.getType();

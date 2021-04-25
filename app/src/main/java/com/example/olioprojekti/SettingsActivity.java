@@ -81,6 +81,8 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+    // The following methods update user information if the information is in correct format.
+
     public void saveFirstName(View view) {
         if(TextFormChecker.checkFirstNameFormat(stEditFirstName.getText().toString())) {
             DataHandler.getInstance().getAccount().setFirstName(stEditFirstName.getText().toString());

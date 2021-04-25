@@ -32,6 +32,7 @@ public class DataHandler {
     private static DataHandler single = new DataHandler();
     public static DataHandler getInstance() {return single;}
 
+    // Checks if user is logged in.
     public static void loginStatusChecker(Context context) {
         if (account == null) {
             Toast.makeText(context, "Login to continue!", Toast.LENGTH_LONG).show();
@@ -40,7 +41,7 @@ public class DataHandler {
         }
     }
 
-    // Updates
+    // Updates Account information in "data.json" file.
     Gson gson = new Gson();
     public void updateAccount(Context context) {
         FileInputStream fis = null;
@@ -97,9 +98,5 @@ public class DataHandler {
 
         return;
     }
-
-
-
-
 
 }
