@@ -1,6 +1,6 @@
 package com.example.olioprojekti;
 
-public class WeightData {
+public class WeightData { //Class for moving data
     String weight;
     String date;
     public WeightData(String date, String weight){
