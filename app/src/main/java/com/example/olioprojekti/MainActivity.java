@@ -15,11 +15,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        DataHandler.loginStatusChecker(this);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        loginStatusChecker();
         textWelcome = findViewById(R.id.textWelcome);
-        textWelcome.setText("Welcome, " + DataHandler.getInstance().getAccount().getFirstName() + "!");
         TextView quotes = (TextView) findViewById(R.id.motivationalQuote);
         quotes.setText(quoteClass.getRandomQuote());
 
@@ -28,7 +27,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        loginStatusChecker();
+        DataHandler.loginStatusChecker(this);
+        if(DataHandler.getInstance().getAccount() != null) {
+            textWelcome.setText("Welcome, " + DataHandler.getInstance().getAccount().getFirstName() + "!");
+        }
     }
 
     public void loadSwaggerApiActivity(View view) {
@@ -63,12 +65,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void loginStatusChecker() {
-        if (DataHandler.getInstance().getAccount() == null) {
-            Toast.makeText(MainActivity.this, "Login to continue!", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
-        }
+    public void loadSettingsActivity(View v) {
+        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+        startActivity(intent);
     }
 
 }

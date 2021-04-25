@@ -1,6 +1,7 @@
 package com.example.olioprojekti;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -30,6 +31,14 @@ public class DataHandler {
 
     private static DataHandler single = new DataHandler();
     public static DataHandler getInstance() {return single;}
+
+    public static void loginStatusChecker(Context context) {
+        if (account == null) {
+            Toast.makeText(context, "Login to continue!", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(context, LoginActivity.class);
+            context.startActivity(intent);
+        }
+    }
 
     Gson gson = new Gson();
     public void updateAccount(Context context) {
@@ -63,7 +72,7 @@ public class DataHandler {
         arrayList = gson.fromJson(json, userListType);
         int i = 0;
         for (Account x : arrayList) {
-            if (this.account.getUserName().equals(x.getUserName())) {
+            if (this.account.getUsername().equals(x.getUsername())) {
                 Log.d("Status:", "RIGHT USERNAME");
                 break;
             }
