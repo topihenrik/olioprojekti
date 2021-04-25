@@ -3,7 +3,6 @@ package com.example.olioprojekti;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -11,10 +10,9 @@ import java.util.Scanner;
 
 
 public class THLData {
-    //String testRegion = "497";
     String userRegion = DataHandler.getInstance().getAccount().getRegionID();
 
-    public String readJsonSmokerPage(){
+    public String readJsonSmokerPage(){ //Reads the api-page and reads the whole page in to a string
         URL url = null;
         String result = null;
         try {
@@ -34,7 +32,7 @@ public class THLData {
         return result;
     }
 
-    public JSONObject jsonSmokerArray() {
+    public JSONObject jsonSmokerArray() { //Calls the readJsonSmokerPage() and makes a json array from it. Then searchers the right region id corresponding to the users region and returns the json object with the right data.
         JSONArray jsonArray  = null;
         JSONObject jsonObject = null;
         try {
@@ -53,7 +51,7 @@ public class THLData {
         return jsonObject;
     }
 
-    public String readJsonAlcoholPage(){
+    public String readJsonAlcoholPage(){ //Reads the api-page and reads the whole page in to a string
         URL url = null;
         String result = null;
         try {
@@ -73,7 +71,7 @@ public class THLData {
         return result;
     }
 
-    public JSONObject jsonAlcoholArray() {
+    public JSONObject jsonAlcoholArray() { //Calls the readJsonSmokerPage() and makes a json array from it. Then searchers the right region id corresponding to the users region and returns the json object with the right data.
         JSONArray jsonArray  = null;
         JSONObject jsonObject = null;
         try {

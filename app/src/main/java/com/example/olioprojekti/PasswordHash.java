@@ -5,10 +5,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
-
 public class PasswordHash {
 
-    public static String generatePassword(String password, byte[] salt) {
+    public static String generatePassword(String password, byte[] salt) { //Generates the SHA-512 and salted password and returns it in string form
         String generatedPassword = null;
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-512");
@@ -27,7 +26,7 @@ public class PasswordHash {
         return generatedPassword;
     }
 
-    public static byte[] getSalt() {
+    public static byte[] getSalt() { //Generates a random salt for the password hashing
         SecureRandom sRandom = new SecureRandom();
         byte[] salt = new byte[16];
         sRandom.nextBytes(salt);

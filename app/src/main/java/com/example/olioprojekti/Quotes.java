@@ -22,7 +22,7 @@ public class Quotes {
     }
 
 
-    public String getRandomQuote(){ //Makes a json array from the string and then selects a random quote from that list and returns a String with the quote and author.
+    public String getRandomQuote(){ //Makes a json array from the string from getJSON(), and then selects a random quote from that list and returns a String with the quote and author.
         String json = getJSON();
         Random random = new Random();
         String quote = null;
