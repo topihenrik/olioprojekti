@@ -33,7 +33,16 @@ public class WeightlossActivity extends AppCompatActivity {
         weight = (constant*weight);
         height = Math.pow(height,2.5);
         double result = Math.round((weight/height)*10)/10.0;
-        mTextView.setText("Your current BMI (rounded) is "+result+".");
+        if(result<0){
+            mTextView.setText("Could not calculate BMI - check your input value!");
+        }
+        else if(height==0){
+            mTextView.setText("Could not calculate BMI - check your height!");
+        }
+        else{
+            mTextView.setText("Your current BMI (rounded) is "+result+".");
+        }
+
         return result;
     }
 
