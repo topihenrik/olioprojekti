@@ -65,6 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
+        android:backgroundTint="#5879db"
         android:text="Drink"
         android:onClick="saveWaterData"
         app:layout_constraintStart_toEndOf="@+id/textMl"

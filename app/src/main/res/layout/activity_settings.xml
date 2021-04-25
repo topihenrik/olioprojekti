@@ -99,6 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:minWidth="48dp"
+                android:backgroundTint="#5879db"
                 android:text="Save"
                 android:onClick="saveFirstName"
                 app:layout_constraintStart_toEndOf="@+id/stEditFirstName"
@@ -124,6 +125,7 @@
                 android:layout_marginTop="52dp"
                 android:minWidth="48dip"
                 android:text="Save"
+                android:backgroundTint="#5879db"
                 android:onClick="saveLastName"
                 app:layout_constraintStart_toEndOf="@+id/stEditLastName"
                 app:layout_constraintTop_toBottomOf="@+id/stButtonSaveFirstName" />
@@ -146,6 +148,7 @@
                 android:layout_marginTop="52dp"
                 android:minWidth="48dip"
                 android:onClick="saveEmail"
+                android:backgroundTint="#5879db"
                 android:text="Save"
                 app:layout_constraintStart_toEndOf="@+id/stEditEmail"
                 app:layout_constraintTop_toBottomOf="@+id/stButtonSaveLastName" />
@@ -205,6 +208,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="52dp"
                 android:minWidth="48dip"
+                android:backgroundTint="#5879db"
                 android:text="Save"
                 android:onClick="saveRegion"
                 app:layout_constraintStart_toEndOf="@+id/stEditRegion"

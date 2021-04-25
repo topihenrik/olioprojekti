@@ -132,18 +132,6 @@
         app:layout_constraintStart_toStartOf="@+id/editWeight"
         app:layout_constraintTop_toBottomOf="@+id/editRegion" />
 
-    <Button
-        android:id="@+id/buttonWeightLoss"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#5879db"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
     <TextView
         android:id="@+id/textFailWeight"
         android:layout_width="wrap_content"
