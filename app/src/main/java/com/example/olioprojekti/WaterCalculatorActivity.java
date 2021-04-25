@@ -2,6 +2,7 @@ package com.example.olioprojekti;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,7 +20,7 @@ public class WaterCalculatorActivity extends AppCompatActivity implements Adapte
     int spinnerSelectionInt;
     static ArrayList<WaterData> waterDataArrayList = new ArrayList<>();
     String ageCategory = "Adult"; // USED FOR TESTING. ALL AGE CATEGORIES ARE: CHILD, ADULT, ELDERLY
-    int waterDrankToday = 0;
+    int waterDrankToday;
     TextView textDrankToday, textWaterRecommendation, textWelcome;
 
     @Override
@@ -36,6 +37,11 @@ public class WaterCalculatorActivity extends AppCompatActivity implements Adapte
         textWelcome = findViewById(R.id.wtrWelcomeText);
         waterDataArrayList = DataHandler.getInstance().getAccount().getWaterDataArrayList();
         textWelcome.setText("Welcome, " + DataHandler.getInstance().getAccount().getFirstName() + "!");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         waterNeed();
     }
 
@@ -51,6 +57,7 @@ public class WaterCalculatorActivity extends AppCompatActivity implements Adapte
 
     public void saveWaterData(View v) {
         WaterData waterData = new WaterData();
+        Log.d("SpinnerSel", String.valueOf(spinnerSelectionInt));
         waterData.WaterData(spinnerSelectionInt);
         waterDataArrayList.add(waterData);
         DataHandler.getInstance().getAccount().setWaterDataArrayList(waterDataArrayList);
@@ -60,6 +67,7 @@ public class WaterCalculatorActivity extends AppCompatActivity implements Adapte
     }
 
     public void waterNeed() {
+        waterDrankToday = 0;
         Date currentTime = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
         String formattedCurrentDate = df.format(currentTime);
