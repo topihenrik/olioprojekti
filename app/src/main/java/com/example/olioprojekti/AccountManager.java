@@ -23,15 +23,15 @@ public class AccountManager {
             Type userListType = new TypeToken<ArrayList<Account>>(){}.getType();
             arrayList = gson.fromJson(json, userListType);
         }
-        for (Account x : arrayList) {
-            if (name.equals(x.getUsername())) {
-                if (name.equals(x.getUsername()) && x.getPassword().equals(PasswordHash.generatePassword(password, x.getSalt()) )){
+        for (Account accountX : arrayList) {
+            if (name.equals(accountX.getUsername())) {
+                if (name.equals(accountX.getUsername()) && accountX.getPassword().equals(PasswordHash.generatePassword(password, accountX.getSalt()) )){
                     Log.d("LogStatus:","LOGGED IN");
-                    return(x);
+                    return(accountX);
                 } else {
                     Log.d("LogStatus:","WRONG USERNAME OR PASSWORD");
                 }
-            } else if (!name.equals(x.getUsername())){
+            } else if (!name.equals(accountX.getUsername())){
                 Log.d("LogStatus:","username not found");
             }
         }
