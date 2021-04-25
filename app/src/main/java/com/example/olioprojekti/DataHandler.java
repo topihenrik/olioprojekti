@@ -17,8 +17,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import com.google.gson.Gson;
 
-// ONCE THE USER HAS LOGGED IN, THIS IS WHERE THE ACCOUNT INFORMATION RESIDES.
-// APPLICATION UPDATES THE USERS ACCOUNT INFORMATION THROUGH THIS CLASS.
+// Once the user has logged in, this is where the account information resides.
+// Application updates the users account information through this class.
 public class DataHandler {
     private static final String FILE_NAME = "data.json";
     private String json;
