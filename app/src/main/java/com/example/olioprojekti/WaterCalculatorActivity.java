@@ -19,7 +19,6 @@ import java.util.Locale;
 public class WaterCalculatorActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     int spinnerSelectionInt;
     static ArrayList<WaterData> waterDataArrayList = new ArrayList<>();
-    String ageCategory = "Adult"; // USED FOR TESTING. ALL AGE CATEGORIES ARE: CHILD, ADULT, ELDERLY
     int waterDrankToday;
     TextView textDrankToday, textWaterRecommendation, textWelcome;
 
@@ -28,9 +27,9 @@ public class WaterCalculatorActivity extends AppCompatActivity implements Adapte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water_calculator);
         Spinner waterSpinner = findViewById(R.id.wtrSizeSpinner);
-        ArrayAdapter<CharSequence> waterAdapater = ArrayAdapter.createFromResource(this, R.array.waterSizes, android.R.layout.simple_spinner_item);
-        waterAdapater.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        waterSpinner.setAdapter(waterAdapater);
+        ArrayAdapter<CharSequence> waterAdapter = ArrayAdapter.createFromResource(this, R.array.waterSizes, android.R.layout.simple_spinner_item);
+        waterAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        waterSpinner.setAdapter(waterAdapter);
         waterSpinner.setOnItemSelectedListener(this);
         textDrankToday = findViewById(R.id.wtrWaterDrankToday);
         textWaterRecommendation = findViewById(R.id.wtrRecommendation);
@@ -66,14 +65,13 @@ public class WaterCalculatorActivity extends AppCompatActivity implements Adapte
         waterNeed();
     }
 
+    // Updates WaterCalculator UI with info related to users water consumption.
     public void waterNeed() {
         waterDrankToday = 0;
         Date currentTime = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
         String formattedCurrentDate = df.format(currentTime);
 
-
-         //DataHandler.getInstance().getAccount().getWaterDataArrayList(waterDataArrayList);
          if(waterDataArrayList.size() > 0) {
              for (WaterData x: waterDataArrayList) {
                  if(x.getDate().equals(formattedCurrentDate)) {
@@ -87,31 +85,14 @@ public class WaterCalculatorActivity extends AppCompatActivity implements Adapte
             return;
         }
 
-        if (ageCategory.equals("Child")) {
-            if(waterDrankToday < 1000) {
-                textWaterRecommendation.setText("You have to drink more water.");
-            } else if (waterDrankToday > 1500) {
-                textWaterRecommendation.setText("You have drank too much water.");
-            } else {
-                textWaterRecommendation.setText("You have drank enough water.");
-            }
-        } else if (ageCategory.equals("Adult")) {
-            if(waterDrankToday < 2000) {
-                textWaterRecommendation.setText("You have to drink more water.");
-            } else if (waterDrankToday > 3000) {
-                textWaterRecommendation.setText("You have drank too much water.");
-            } else {
-                textWaterRecommendation.setText("You have drank enough water.");
-            }
-        } else if (ageCategory.equals("Elderly")) {
-            if(waterDrankToday < 1000) {
-                textWaterRecommendation.setText("You have to drink more water.");
-            } else if (waterDrankToday > 1500) {
-                textWaterRecommendation.setText("You have drank too much water.");
-            } else {
-                textWaterRecommendation.setText("You have drank enough water.");
-            }
+        if(waterDrankToday < 2000) {
+            textWaterRecommendation.setText("You have to drink more water.");
+        } else if (waterDrankToday > 3000) {
+            textWaterRecommendation.setText("You have drank too much water.");
+        } else {
+            textWaterRecommendation.setText("You have drank enough water.");
         }
+
         return;
     }
 
