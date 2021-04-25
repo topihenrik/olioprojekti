@@ -43,6 +43,17 @@ public class DataHandler {
 
     // Updates Account information in "data.json" file.
     Gson gson = new Gson();
+
+
+    public void saveDietData(String jsonObject) {
+        DietData dietData = gson.fromJson(jsonObject, DietData.class);
+        dietData.initDate();
+        Log.d("dietData:", dietData.toString());
+        ArrayList<DietData> dietDataArrayList = account.getDietDataArrayList();
+        dietDataArrayList.add(dietData);
+        DataHandler.getInstance().getAccount().setDietDataArrayList(dietDataArrayList);
+
+    }
     public void updateAccount(Context context) {
         FileInputStream fis = null;
         try {

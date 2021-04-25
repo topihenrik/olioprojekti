@@ -35,17 +35,27 @@ public class InputLogActivity extends AppCompatActivity {
         dataList.add("Your WaterCalculator data: ");
         
         for (WaterData x : DataHandler.getInstance().getAccount().getWaterDataArrayList()) {
-            tempData = x.getDate() + ";" + x.getWaterConsumed();
+            tempData = "Date: " + x.getDate() + ";" + x.getWaterConsumed() + "ml";
             dataList.add(tempData);
         }
 
-        dataList.add("Your WeightCalculator data: ");
+        dataList.add("Your Weightloss data: ");
 
         for (WeightData x : DataHandler.getInstance().getAccount().getWeightDataArrayList()) {
-            tempData = x.getDate() + ";" + x.getWeight();
+            tempData = "Date: " + x.getDate() + ";" + x.getWeight() + "kg";
             dataList.add(tempData);
         }
 
+        dataList.add("Your ClimateDiet data:");
+
+        for (DietData x : DataHandler.getInstance().getAccount().getDietDataArrayList()) {
+            tempData = "Dairy: " + Math.round(Double.parseDouble(x.getDairy())*100.0)/100.0 + ";" + "Meat: "
+                    + Math.round(Double.parseDouble(x.getMeat())*100.0)/100.0 + ";" + "Plant: "
+                    + Math.round(Double.parseDouble(x.getPlant())*100.0)/100.0 + ";" + "Restaurant: "
+                    + Math.round(Double.parseDouble(x.getRestaurant())*100.0)/100.0 + ";" + "Date: "
+                    + x.getDate();
+            dataList.add(tempData);
+        }
 
         return dataList;
     }

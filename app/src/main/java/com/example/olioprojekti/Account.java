@@ -66,6 +66,10 @@ public class Account {
     public void setWeightDataArrayList(ArrayList<WeightData> weightDataArrayList) { this.weightDataArrayList = weightDataArrayList; }
     public ArrayList<WeightData> getWeightDataArrayList() { return weightDataArrayList; }
 
+    ArrayList<DietData> dietDataArrayList = new ArrayList<>();
+    public void setDietDataArrayList(ArrayList<DietData> dietDataArrayList) { this.dietDataArrayList = dietDataArrayList;}
+    public ArrayList<DietData> getDietDataArrayList() { return dietDataArrayList; }
+
     public Account(String firstName, String lastName, String username, String email, String password, String region, String regionID, String weight, String height, byte[] salt) {
         this.firstName = firstName;
         this.lastName = lastName;
